@@ -1,17 +1,21 @@
 import React from 'react';
+import TEST from './components/TEST'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import {Container, Columns,Column} from 'react-bulma-components'
+import {Container} from 'react-bulma-components'
 import './_variables.scss'
+import store from './store'
+
+import {Provider} from 'react-redux'
 
 
 const App = () => (
+	<Provider store={store}>
 	<>
 <Container>
-  <div class="notification">
-    This container is <strong>centered</strong> on desktop.
-  </div>
+  <TEST/>
   </Container>
 </>
+</Provider>
 
   )
 
