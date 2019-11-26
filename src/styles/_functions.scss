@@ -1,0 +1,17 @@
+
+@mixin flexCenter() {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    
+}
+
+@mixin backgroundText($background,$textColor) {
+     background: $background;
+     color:$textColor;
+}
+
+@mixin fontSizeFontSpacing($fontsize,$fontspacing) {
+    font-size: $fontsize;
+    letter-spacing:$fontspacing;
+}

@@ -1,0 +1,8 @@
+@import "./functions";
+
+
+header {
+
+    @include flexCenter();
+    @include backgroundText($primaryBgColor, $primarytextBlack);
+}

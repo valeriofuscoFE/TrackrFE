@@ -1,0 +1,52 @@
+@import "../variables";
+@import "./header";
+@import "./functions";
+                  
+   
+
+body { 
+    background-image: url('background.png');
+    background-repeat: no-repeat;
+    background-size: 1500px 1500px;
+    font-family: Open Sans;
+    letter-spacing: 0.15em;
+    color:$primarytextBlack;
+    // background-color: red;
+}
+
+.topNavBar{
+    @include backgroundText($secondaryBgColor,$primarytextWhite);
+}
+
+.navbar-start .navbar-item {
+    @include backgroundText($secondaryBgColor,$primarytextWhite);
+    &:hover{background: $secondaryHover;}
+}
+
+.navbar-brand .navbar-item {
+    @include backgroundText($secondaryBgColor,$primarytextWhite);
+    &:hover{color: $secondaryHover;}
+    text-decoration: overline;
+}
+
+.navbar-item .buttons{
+    @include backgroundText($secondaryBgColor,$primarytextBlack);
+    &:hover{color: $secondaryHover;}
+}
+
+.profilepicture{
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    &:hover{color: $secondaryHover;}
+}
+
+
+.container {
+    @include backgroundText($secondaryBgColor,$primarytextWhite);
+}
+
+.container .label {
+    color:$primarytextWhite;
+    @include fontSizeFontSpacing($capslockPrimaryFontSize,$capslockPrimaryFontSpacing);
+}
