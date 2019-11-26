@@ -2,7 +2,7 @@ import {FETCH_APPLICATIONS , NEW_APPLICATION} from '../actions/types'
 
 
 const initialState = {
-	items:[],
+	items:[1,2],
 	item:{}
 }
 
