@@ -1,2 +1,57 @@
 @import '~bulma/sass/utilities/_all.sass';
 
+// BACKGROUND
+$primaryBgColor:#F8F8F8;                        
+$secondaryBgColor:#2B2B28; 
+
+
+// TEXT
+$primarytextBlack:#2B2B28;  
+$primarytextWhite:#F8F8F8;  
+
+$capslockPrimaryFontSize: 14px;
+$capslockPrimaryFontSpacing: 0.15em;
+
+
+// MODAL
+$primaryModalColor:#F8F8F8; 
+$sideModalColor:#F2F2F2;
+$topModalColor:#F2F2F2;
+
+$primaryModalButton:#CBCBCB;
+$secondaryModalButton:rgba(203, 203, 203, 0.05);
+
+// CARDS
+$primaryCardBgColor:#F8F8F8;                           
+$secondaryCardBgColor:#2B2B28; 
+$greenBg:#52DE97;
+$pinkBG:#FF9DE2;
+$purpleBg:#9870FC;
+$cyanBg:#51EAEA;
+$darkPinkBg:#DF42D1;
+
+
+// BORDER COLOR              
+$primaryCardBorderColor:1px solid #2B2B28;
+$secondaryCardBorderColor:2px solid #9870FC;
+$thirdCardBorderColor:2px solid #DF42D1;
+
+// BORDER RADIUS
+$primaryCardRadius:10px;
+$primaryButtonRadius:1px;
+
+// BORDER SHADOW
+$primaryBorderShadow:0px 4px 4px rgba(43, 43, 40, 0.25);
+
+// BUTTONS
+$primaryBtnWhite:#F8F8F8;  
+$primaryBtnBlack:#2B2B28;
+$deleteBtn:#EFA2A2;
+
+// HOVER
+$primaryHover:0px 4px 4px rgba(0, 0, 0, 0.35);
+$secondaryHover:rgba(81, 234, 234, 0.9);
+$thirdHover:rgba(81, 234, 234, 0.7);
+
+ 
+

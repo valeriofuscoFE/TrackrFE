@@ -8,14 +8,38 @@ body {
     background-image: url('background.png');
     background-repeat: no-repeat;
     background-size: 1500px 1500px;
-    font-family: Open Sans;
+    // font-family: Open Sans;
     letter-spacing: 0.15em;
     color:$primarytextBlack;
     // background-color: red;
 }
 
+.footer {
+    @include backgroundText($primaryBgColor,$primarytextBlack);
+    // position: fixed;
+    bottom: 0;
+    margin-top: 300px;
+    padding-bottom: 20px;
+    padding-top: 70px;
+    box-shadow: $primaryBorderShadow;
+    letter-spacing: 4px;
+ 
+    // height:20%;
+    // background-color: red;
+    // color: white;
+    // text-align: center;
+
+  }
+
+  .footer hr {
+     
+      box-shadow: $primaryBorderShadow;
+      background-color: transparent;
+  }
+
 .topNavBar{
     @include backgroundText($secondaryBgColor,$primarytextWhite);
+    margin-bottom: 50px;
 }
 
 .navbar-start .navbar-item {
@@ -42,11 +66,103 @@ body {
 }
 
 
-.container {
-    @include backgroundText($secondaryBgColor,$primarytextWhite);
+.registerColumn {
+    @include backgroundText($secondaryBgColor,$primarytextWhite); 
 }
 
-.container .label {
-    color:$primarytextWhite;
-    @include fontSizeFontSpacing($capslockPrimaryFontSize,$capslockPrimaryFontSpacing);
+.registerColumn .label {
+    @include backgroundText($secondaryBgColor,$primarytextWhite); 
 }
+
+.registerColumn .button {
+    @include backgroundText($primaryBgColor,$primarytextBlack); 
+    &:hover{background-color: $secondaryHover;}
+    border-radius:$primaryButtonRadius;
+}
+
+.registerColumn .input {
+    @include backgroundText($secondaryBgColor,$primarytextWhite); 
+    &:hover{background-color:$thirdHover;};
+    &::placeholder {
+        color:$primarytextBlack;
+      }
+}
+
+#roleOption {
+    @include backgroundText($secondaryBgColor,$thirdHover); 
+    &:hover{background-color:$thirdHover;
+            color: black};
+    &::placeholder {
+        color:$primarytextBlack;
+    }
+    border-color: $primaryBgColor;
+}
+
+.topColumn{
+    @include backgroundText(0,$primarytextBlack);
+    margin-top: 10px;
+    margin-right:10px;
+    text-align: center;
+    border-radius:$primaryButtonRadius;
+    border:$secondaryCardBorderColor;
+    box-shadow: $primaryBorderShadow;
+}
+
+.plusColumn{
+    @include backgroundText(0,$primarytextBlack);
+    margin-top: 10px;
+    margin-right:40px;
+    margin-left:30px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius:$primaryButtonRadius;
+    border:$thirdCardBorderColor; 
+    box-shadow: $primaryBorderShadow;
+}    
+.bottomColumn{
+    color:$primarytextBlack;
+    margin-top: 10px;
+    margin-right:10px;             
+    border-radius:$primaryCardRadius;
+    border:$secondaryCardBorderColor;
+    box-shadow: $primaryBorderShadow;
+}
+
+.logoButton{
+    box-shadow: $primaryBorderShadow;
+    border-radius:$primaryButtonRadius;
+    border:$primaryCardBorderColor;
+    background-color: transparent;
+    margin-right:5px;
+
+}
+
+.bottomColumn hr {
+  
+    box-shadow: $primaryBorderShadow;
+    background-color:rgba(43, 43, 40, 0.1);
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#bottomColumn1{
+    @include cardBackground($greenBg);
+}       
+
+#bottomColumn2{
+    @include cardBackground($pinkBG);
+}
+
+#bottomColumn3{
+    @include cardBackground($purpleBg);
+}
+
+#bottomColumn4{
+    @include cardBackground($cyanBg);
+}
+
+#bottomColumn5{
+    @include cardBackground($darkPinkBg);
+}
+

@@ -9,9 +9,15 @@
 @mixin backgroundText($background,$textColor) {
      background: $background;
      color:$textColor;
+
 }
 
 @mixin fontSizeFontSpacing($fontsize,$fontspacing) {
     font-size: $fontsize;
     letter-spacing:$fontspacing;
+}
+
+
+@mixin cardBackground($cardBackground) {
+    background-color: $cardBackground;
 }
