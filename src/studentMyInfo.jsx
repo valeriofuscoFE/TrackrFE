@@ -34,7 +34,7 @@ class StudentMyInfo extends Component {
           <button onClick={this.displayModal}>Whatever Button</button>
 
 
-          <div class="modal" id="pageModal3">
+          <div class="modal" id="pageModal">
             <div class="modal-background"></div>
             <div class="modal-card">
             <section class="modal-card-body">

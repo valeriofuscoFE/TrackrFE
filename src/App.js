@@ -14,25 +14,32 @@ import SchoolDetails from './schoolDetails';
 import AdminDashboard from './adminDashboard';
 import Footer from './footer';
 import AddJobApplication from './addJobApplication';
-import JobApplicationModal from './jobApplicationModal';
+import CompanyInfoModal from './companyInfoModal';
+import JobInfoModal from './jobInfoModal';
+import TasksModal from 'tasksModal';
+import OfferModal from './offerModal';
 import Test from './test';
+
 
 
 
 const App = () => (
   <>
     <Container>
-       <ManagerDashboard/>
+       {/* <ManagerDashboard/> */}
        {/* <AddStudent/> */}
        {/* <SchoolDetails/> */}
-       {/* <AddJobApplication/> */}
+       <AddJobApplication/>
        {/* <Test/> */}
-       {/* <JobApplicationModal/> */}
-    
-      {/* <StudentDashboard/> */}
+       {/* <CompanyInfoModal/> */}
+       {/* <JobInfoModal/> */}
+       {/* <TasksModal/> */}
+       <OfferModal/>
+{/*     
+      <StudentDashboard/> */}
        {/* <ManagerMyInfo/> */}
        {/* <StudentMyInfo/> */}
-      <AdminDashboard/>
+      {/* <AdminDashboard/> */}
       {/* <TopNavBar /> */}
       {/* <LandingPage /> */}
       {/* <SideNavBar /> */}
