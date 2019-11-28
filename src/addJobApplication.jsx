@@ -14,12 +14,12 @@ class AddJobApplication extends Component {
   
 //  MODAL FUNCTIONS
   displayModal = () => {
-    var modal = document.getElementById("pageModal");
+    var modal = document.getElementById("pageModal2");
     modal.style.display = "block";
   };
 
   hideModal = () => {
-    var modal = document.getElementById("pageModal");
+    var modal = document.getElementById("pageModal2");
     modal.style.display = "none";
   };
 
@@ -31,10 +31,10 @@ class AddJobApplication extends Component {
       <>
         <Container>
           {/* BUTTON */}
-          <button onClick={this.displayModal}>Whatever Button</button>
+          <button onClick={this.displayModal}>Add JOB Whatever Button</button>
 
 
-          <div class="modal" id="pageModal">
+          <div class="modal" id="pageModal2">
             <div class="modal-background"></div>
             <div class="modal-card">
             <section class="modal-card-body">
@@ -70,42 +70,86 @@ class AddJobApplication extends Component {
 
                   <div class="field">
                     <div class="control">
-                    <label>Job position</label>
-                    <br/><label>Title</label>
-                      <input class="input" type="text" placeholder="title of job position" />
+                    <hr></hr>
+                    <strong><label>Company Name</label></strong>
+                    <hr></hr>
+                    <br/><strong><label>Website</label></strong>
+                      <div>mapping data here</div>
                     </div>
                   </div>
 
                   <div class="field">
                     <div class="control">
-                    <label>Phone nr</label>
-                      <input class="input" type="email" placeholder="phone nr" />
+                    <strong><label>Location</label></strong>
+                    <div>mapping data here</div>
                     </div>
                   </div>
 
                   <div class="field">
                     <div class="control">
-                    <label>Job Position</label>
-                      <input class="input" type="text" placeholder="job position"/>
+                    <hr></hr>
+                    <strong><label>JOB POSITION</label></strong>
+                    <hr></hr>
+                    <br/><strong><label>Role Title</label></strong>
+                      <div>mapping data here</div>
                     </div>
                   </div>
 
                   <div class="field">
                     <div class="control">
-                    <label>Job Location</label>
-                      <input class="input" type="text" placeholder="job location"/>
+                    <strong><label>Contract Type</label></strong>
+                    <div>mapping data here</div>
                     </div>
                   </div>
 
                   <div class="field">
                     <div class="control">
-                    <label>Description</label>
-                       <textarea class="textarea" type="textarea" placeholder="description" />
+                    <strong><label>Description</label></strong>
+                    <div>mapping data here</div>
                     </div>
                   </div>
 
-                  
+                  <div class="field">
+                    <div class="control">
+                    <strong> <label>Apply URL</label></strong>
+                    <div>mapping data here</div>
+                    </div>
+                  </div>
 
+                  <div class="field">
+                    <div class="control">
+                    <strong><label>Deadline</label></strong>
+                    <div>mapping data here</div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                    <strong><label>Applied</label></strong>
+                    <div>mapping data here</div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                    <strong><label>Interview 1</label></strong>
+                    <div>mapping data here</div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                    <strong><label>Interview 2</label></strong>
+                    <div>mapping data here</div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                    <strong><label>Status</label></strong>
+                    <div>wishlist as a default here???</div>
+                    </div>
+                  </div>
 
                 {/* BUTTONS */}
                   <div class="field is-grouped">
