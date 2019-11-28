@@ -18,8 +18,8 @@ import CompanyInfoModal from './companyInfoModal';
 import JobInfoModal from './jobInfoModal';
 import TasksModal from 'tasksModal';
 import OfferModal from './offerModal';
+import StudentsList from './studentsList';
 import Test from './test';
-
 
 
 
@@ -28,12 +28,13 @@ const App = () => (
     <Container>
        {/* <ManagerDashboard/> */}
        {/* <AddStudent/> */}
+       <StudentsList/>
        {/* <SchoolDetails/> */}
        {/* <AddJobApplication/> */}
        {/* <Test/> */}
        {/* <CompanyInfoModal/> */}
        {/* <JobInfoModal/> */}
-       <TasksModal/>
+       {/* <TasksModal/> */}
        {/* <OfferModal/> */}
 {/*     
       <StudentDashboard/> */}
