@@ -1,5 +1,5 @@
 import React from 'react';
-import TopNavBar2 from './topNavBar2';
+import TopNavBarStudent from './topNavBarStudent';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
@@ -7,7 +7,7 @@ import { Box,Container, Columns,Column} from 'react-bulma-components'
 
 const StudentDashboard = () => (
 <>
-<TopNavBar2 />
+<TopNavBarStudent />
 
 <Container>
 {/* FIRST ROW */}

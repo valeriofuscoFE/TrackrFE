@@ -45,12 +45,12 @@ const TopNavBar2 = () => (
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button">MY INFO</a>
+                <a class="button" id="buttonWhite">MY INFO</a>
               </div>
             </div>
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button">LOG OUT</a>
+                <a class="button" id="buttonWhite">LOG OUT</a>
               </div>
             </div>
           </div>
