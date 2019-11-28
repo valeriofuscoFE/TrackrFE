@@ -29,12 +29,12 @@ const App = () => (
        {/* <ManagerDashboard/> */}
        {/* <AddStudent/> */}
        {/* <SchoolDetails/> */}
-       <AddJobApplication/>
+       {/* <AddJobApplication/> */}
        {/* <Test/> */}
        {/* <CompanyInfoModal/> */}
        {/* <JobInfoModal/> */}
-       {/* <TasksModal/> */}
-       <OfferModal/>
+       <TasksModal/>
+       {/* <OfferModal/> */}
 {/*     
       <StudentDashboard/> */}
        {/* <ManagerMyInfo/> */}

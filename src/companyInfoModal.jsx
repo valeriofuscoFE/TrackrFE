@@ -66,6 +66,7 @@ class CompanyInfoModal extends Component {
 
                           <a class="navbar-item">Tasks</a>
 
+                          <br />
                           <a class="navbar-item">Offer</a>
                         </div>
                       </div>
@@ -80,7 +81,7 @@ class CompanyInfoModal extends Component {
                     <div class="field">
                       <label class="label">
                         <div class="columns">
-                          <div class="column">
+                          <div class="column is-2">
                             <img
                               src={Profilepicture}
                               class="profilepicture"
@@ -88,8 +89,28 @@ class CompanyInfoModal extends Component {
                               width="50px"
                             />
                           </div>
-                          <div class="column is-8 is-centered">
+                          <div class="column is-6 is-centered">
                             <h6>COMPANY INFO</h6>
+                          </div>
+                          <div class="column is-4 ">
+                            <div class="field">
+                              <label class="label">
+                                <small>UPDATE JOB</small>
+                              </label>
+                              <div class="control">
+                                <div class="select">
+                                  <select id="roleOption">
+                                    <option id="roleOption2">
+                                      Desired Position
+                                    </option>
+                                    <option>Application sent</option>
+                                    <option>Responses</option>
+                                    <option>Meeting Phase</option>
+                                    <option>Offer</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </label>
@@ -124,9 +145,11 @@ class CompanyInfoModal extends Component {
                     </div>
                     <div class="field">
                       <div class="control">
-                      <hr></hr>
-                      <br/><strong>
-                      <label>Notes</label></strong>
+                        <hr></hr>
+                        <br />
+                        <strong>
+                          <label>Notes</label>
+                        </strong>
                         <textarea
                           class="textarea"
                           type="textarea"

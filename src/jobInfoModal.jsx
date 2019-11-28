@@ -80,7 +80,7 @@ class JobInfoModal extends Component {
                     <div class="field">
                       <label class="label">
                         <div class="columns">
-                          <div class="column">
+                          <div class="column is-2">
                             <img
                               src={Profilepicture}
                               class="profilepicture"
@@ -88,8 +88,28 @@ class JobInfoModal extends Component {
                               width="50px"
                             />
                           </div>
-                          <div class="column is-8 is-centered">
+                          <div class="column is-6 is-centered">
                             <h6>JOB INFO</h6>
+                          </div>
+                          <div class="column is-4 ">
+                            <div class="field">
+                              <label class="label">
+                                <small>UPDATE JOB</small>
+                              </label>
+                              <div class="control">
+                                <div class="select">
+                                  <select id="roleOption">
+                                    <option id="roleOption2">
+                                      Desired Position
+                                    </option>
+                                    <option>Application sent</option>
+                                    <option>Responses</option>
+                                    <option>Meeting Phase</option>
+                                    <option>Offer</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </label>
