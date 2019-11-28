@@ -85,10 +85,10 @@ const LandingPage = () => (
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button">Submit</button>
+    <button class="button" id="buttonWhite">Submit</button>
   </div>
   <div class="control">
-    <button class="button">Cancel</button>
+    <button class="button buttonDelete" id="buttonDelete">Cancel</button>
   </div>
 </div>
   </div>

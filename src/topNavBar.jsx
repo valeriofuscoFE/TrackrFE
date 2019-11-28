@@ -35,7 +35,7 @@ const TopNavBar = () => (
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button">
+          <a class="button" id="buttonWhite">
             LOG IN
           </a>
 
