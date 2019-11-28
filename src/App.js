@@ -20,6 +20,7 @@ import TasksModal from 'tasksModal';
 import OfferModal from './offerModal';
 import StudentsList from './studentsList';
 import Test from './test';
+import UserList from './userList';
 
 
 
@@ -28,7 +29,8 @@ const App = () => (
     <Container>
        {/* <ManagerDashboard/> */}
        {/* <AddStudent/> */}
-       <StudentsList/>
+       {/* <StudentsList/> */}
+       <UserList/>
        {/* <SchoolDetails/> */}
        {/* <AddJobApplication/> */}
        {/* <Test/> */}
