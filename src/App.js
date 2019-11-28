@@ -21,6 +21,8 @@ import OfferModal from './offerModal';
 import StudentsList from './studentsList';
 import Test from './test';
 import UserList from './userList';
+import StudentsKPI from './studentsKPI';
+
 
 
 
@@ -30,7 +32,8 @@ const App = () => (
        {/* <ManagerDashboard/> */}
        {/* <AddStudent/> */}
        {/* <StudentsList/> */}
-       <UserList/>
+       <StudentsKPI/>
+       {/* <UserList/> */}
        {/* <SchoolDetails/> */}
        {/* <AddJobApplication/> */}
        {/* <Test/> */}
