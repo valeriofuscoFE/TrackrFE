@@ -1,6 +1,9 @@
-import {combineReducers} from 'redux'
-import jAppReducer from './jAppReducer'
+import {combineReducers} from 'redux';
+import auth from './auth';
+import profile from './profile'
+
 
 export default combineReducers({
-	applications: jAppReducer
+	auth,
+	profile
 })
