@@ -1,5 +1,5 @@
 import React from 'react';
-import TopNavBarManager from './topNavBarManager';
+import TopNavBarManager from './navbars/topNavBarManager';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 

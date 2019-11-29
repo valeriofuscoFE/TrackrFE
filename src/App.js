@@ -4,24 +4,24 @@ import {Container, Columns,Column} from 'react-bulma-components'
 import './styles/style.scss';
 import TopNavBar from './components/navbars/topNavBar';
 import SideNavBar from './sideNavBar';
-import LandingPage from './landingPage';
-import ManagerDashboard from './managerDashboard';
+import LandingPage from './components/landingPage';
+import ManagerDashboard from './components/managerDashboard';
 import StudentDashboard from './components/studentDashboard';
-import StudentMyInfo from './studentMyInfo';
-import ManagerMyInfo from './managerMyInfo';
-import AddStudent from './addStudent';
-import SchoolDetails from './schoolDetails';
-import AdminDashboard from './adminDashboard';
-import Footer from './footer';
-import AddJobApplication from './addJobApplication';
-import CompanyInfoModal from './companyInfoModal';
-import JobInfoModal from './jobInfoModal';
-import TasksModal from 'tasksModal';
-import OfferModal from './offerModal';
-import StudentsList from './studentsList';
+import StudentMyInfo from './components/modals/studentMyInfo';
+import ManagerMyInfo from './components/modals/managerMyInfo';
+import AddStudent from './components/modals/addStudent';
+import SchoolDetails from './components/modals/schoolDetails';
+import AdminDashboard from './components/adminDashboard';
+import Footer from './components/footer';
+import AddJobApplication from './components/modals/addJobApplication';
+import CompanyInfoModal from './components/modals/companyInfoModal';
+import JobInfoModal from './components/modals/jobInfoModal';
+import TasksModal from 'components/modals/tasksModal';
+import OfferModal from './components/modals/offerModal';
+import StudentsList from './components/studentsList';
 import Test from './test';
-import UserList from './userList';
-import StudentsKPI from './studentsKPI';
+import UserList from './components/userList';
+import StudentsKPI from './components/studentsKPI';
 //REDUX
 import {Provider} from 'react-redux'
 import store from './store'
@@ -54,6 +54,7 @@ const App = () => {
 				</section>
 			</Fragment>
 		</Router>
+    
 		</Provider>
 		  );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import TopNavBarAdmin from './topNavBarAdmin';
+import TopNavBarAdmin from './navbars/topNavBarAdmin';
 import Profilepicture from './assets/profilepicture.jpg'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
