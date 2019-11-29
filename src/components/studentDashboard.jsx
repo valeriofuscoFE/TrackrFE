@@ -1,11 +1,21 @@
-import React from 'react';
-import TopNavBarStudent from './topNavBarStudent';
+import React , {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import  {getCurrentProfile} from '../../actions/profile';
+import TopNavBarStudent from '../topNavBarStudent';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
 
 
-const StudentDashboard = () => (
+const StudentDashboard = ({getCurrentProfile,auth,profile}) => {
+  useEffect(()=>{
+		getCurrentProfile();
+	},[]);
+
+
+return (
+
 <>
 <TopNavBarStudent />
 
@@ -75,7 +85,19 @@ const StudentDashboard = () => (
 </Container>
 </>
 
-  )
+ 
+)}
 
-
-  export default StudentDashboard;
+  Dashboard.propTypes={
+    getCurrentProfile: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired,
+  }     // WTF IS PROPTYPES ???   https://it.reactjs.org/docs/typechecking-with-proptypes.html 
+  
+  const mapStateToProps = state => ({
+    auth:state.auth,
+    profile:state.profile
+  })
+  
+  
+  export default connect(mapStateToProps,{getCurrentProfile})(StudentDashboard);
