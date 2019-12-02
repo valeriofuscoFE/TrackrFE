@@ -1,8 +1,7 @@
-import {GET_PROFILE} from '../actions/types';
+import{GET_SCHOOLS} from '../actions/type'
 
 const initialState ={
-	profile:null,
-	applications:[],
+	schools:null,
 	loading:true
 }
 
@@ -11,10 +10,10 @@ export default function(state = initialState, action ){
  
 
  switch(type){
-	 case GET_PROFILE:
+	 case GET_SCHOOLS:
 		 return{
 			 ...state,
-			 profile:payload,
+			 schools:payload,
 			 loading:false
 		 }
 		default:

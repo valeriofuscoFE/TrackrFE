@@ -1,15 +1,15 @@
-import React, { Fragment,useState } from 'react';
+import React, { Fragment, useState, Redirect } from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {login} from '../../actions/auth'
+import {login} from '../actions/auth'
 
 const Login = ({login , isAuthenticated}) => {
 	const [formData,setFormData] = useState({
 		email:'',
 		password:''
 	})
-	const {}
-}
+
+
 
 //FOR REGISTER COMPONENT 
 
@@ -67,7 +67,7 @@ return (
      
 	</Fragment>
 )
-
+}
 Login.propTypes={
 	login: PropTypes.func.isRequired, //SAME ON REGISTER COMPONENT
 	isAuthenticated: PropTypes.bool,
