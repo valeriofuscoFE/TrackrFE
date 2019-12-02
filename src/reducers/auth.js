@@ -11,7 +11,6 @@ const initialState = {
 	token: localStorage.getItem('token'),
 	isAuthenticated:null,
 	loading:false,
-	loading:true,
 	user:null
 }
 
@@ -26,6 +25,9 @@ switch(type){
 			user:payload
 		}
    case REGISTER_SUCCESS:
+	   return {
+		   ...state
+	   }
    case LOGIN_SUCCESS:
 	   localStorage.setItem('token',payload.token);
 	   return {
@@ -35,8 +37,14 @@ switch(type){
 		   loading:false
 	   }
 	   case REGISTER_FAIL:
-	   case AUTH_ERROR:
+		   return {
+			   ...state,
+			   isAuthenticated:false,
+			   loading:true
+		   }
 	   case LOGIN_FAIL:
+	   case AUTH_ERROR:
+	   
 		   localStorage.remove('token');
 		   return {
 			   ...state,

@@ -1,47 +1,15 @@
-import React, { Fragment,useState } from 'react';
+import React, { Fragment, useState} from 'react';
+import {Redirect} from 'react-router-dom'
+import TopNavBar from './navbars/topNavBar'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {login} from '../../actions/auth'
+import {login} from '../actions/auth'
 
 const Login = ({login , isAuthenticated}) => {
 	const [formData,setFormData] = useState({
 		email:'',
 		password:''
 	})
-	const {}
-}
-
-//FOR REGISTER COMPONENT 
-
-
-/* const Register = ({register, isAuthenticated}) =>{
-	const [formData,setFormData] = useState([
-		ALL THE REGISTRATION INFO HERE 
-		EXAMPLE : 
-
-		name:'',
-		email:'',
-		password:''	
-	])
-	const {name,email,password} = formData;
-
-	const onChange = e =>
-	setFormData({...formData,[e.target.name]:e.target.value});
-	const onSubmit = async e => {
-		e.preventDefault()
-		register({name,email,password});
-	}
-
-	return (
-		HTML
-	)
-}  */
-
-
-
-
-
-// YOU HAVE TO DO THE SAME THING ON REGISTER COMPONENT BUT CHANGE THE ACTION WITH register(name,email,password ecc...)
 const {email,password} = formData;
 
 const onChange = e =>
@@ -49,37 +17,85 @@ setFormData({...formData,[e.target.name]: e.target.value});
 
 const onSubmit = async e => {
 	e.preventDefault();
-	login(email,password)  //EXAMPLES
+	console.log(formData)
+	login(email,password)
 }
 
-//Redirect if logged in   SAME THING ON REGISTER COMPONENT
-if(isAuthenticated){
-	return <Redirect to="/student/dashboard" />
-}  //TO DO THIS ACTION U NEED TO SET UP REACT ROUTER ! WITH ALL THE ROUTES 
 
 
 
-
-
-// FRAGMENT IS  <>  </>
 return (
-	<Fragment>  
-     
-	</Fragment>
+	<Fragment>
+<TopNavBar/>
+<form classNameName="form"  onSubmit={e => onSubmit(e)}> 
+<div className="columns">
+  <div className="column"></div>
+  <div className="column"></div>
+  <div className="column is-one-third registerColumn">
+  <div className="field">
+  <label className="label">REGISTER</label>
+</div>
+
+
+<div className="field">
+  <label className="label"><small>EMAIL</small></label>
+  <div className="control has-icons-left has-icons-right">
+    <input name='email' className="input" type="text" placeholder="Email input" value={email} onChange={e => onChange(e)}/>
+    <span className="icon is-small is-left">
+      <i className="fas fa-envelope"></i>
+    </span>
+    <span className="icon is-small is-right">
+      <i className="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+</div>
+
+<div className="field">
+  <label className="label"><small>PASSWORD</small></label>
+  <div className="control has-icons-left has-icons-right">
+    <input name='password' className="input" type="password" placeholder="PASSWORD" value={password} onChange={e => onChange(e)}/>
+    <span className="icon is-small is-left">
+      <i className="fas fa-envelope"></i>
+    </span>
+    <span className="icon is-small is-right">
+      <i className="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+</div>
+
+
+
+<div className="field is-grouped">
+  <div className="control">
+    <button className="button" id="buttonWhite">Submit</button>
+  </div>
+  <div className="control">
+    <button className="button buttonDelete" id="buttonDelete">Cancel</button>
+  </div>
+</div>
+  </div>
+  <div className="column"></div>
+</div>
+</form>
+
+</Fragment>
+
 )
+
+}
+
 
 Login.propTypes={
 	login: PropTypes.func.isRequired, //SAME ON REGISTER COMPONENT
 	isAuthenticated: PropTypes.bool,
 }
 
-/* Register.propTypes = {
-	register: PropTypes.func.isRequired,
-	isAuthenticated:PropTypes.bool
-} */
 
-const mapStateToProps = state => ({    // ADD THIS ON REGISTER COMPONENT 
+const mapStateToProps = state => ({  
 	isAuthenticated:state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(
+	mapStateToProps,
+	{login}
+	) (Login);

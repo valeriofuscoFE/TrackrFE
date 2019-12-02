@@ -1,15 +1,36 @@
 import React from 'react';
-import TopNavBarAdmin from './navbars/topNavBarAdmin';
+import {useEffect, useState} from 'react';
+import TopNavBarAdmin from '../components/navbars/topNavBarAdmin';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
+import { getCurrentProfile } from '../actions/profile'
+import PropTypes from 'prop-types';
+import store from '../store'
+import {loadUser} from '../actions/auth'
+import {connect} from 'react-redux';
 
+const mapStateToProps = state => ({
+  auth: state.auth,
+  profile: state.profile
+})
 
+const AdminDashboard = () => {
+// const [profile, setProfile] = useState(null)
 
-const AdminDashboard = () => (
+  useEffect(()=>{
+    console.log("useEffect is running")
+    store.dispatch(getCurrentProfile());
+    store.dispatch(loadUser());
+    // setProfile(profile)
+    // getSchools();
+  },[]);
+
+  return(
 <>
-<TopNavBarAdmin />
+<TopNavBarAdmin/>
 
 <Container>
+
 {/* FIRST ROW */}
  <div class="columns  is-centered">
 
@@ -51,8 +72,15 @@ const AdminDashboard = () => (
 
 </Container>
 </>
-
   )
+}
+AdminDashboard.propTypes={
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+}     
 
 
-  export default AdminDashboard;
+
+
+  export default connect(mapStateToProps,{getCurrentProfile})(AdminDashboard);
