@@ -1,6 +1,6 @@
 import React from 'react';
-import {Container, Columns,Column} from 'react-bulma-components';
-import Profilepicture from './assets/profilepicture.jpg'
+import {Container} from 'react-bulma-components';
+///import Profilepicture from '../../assets/profilepicture.jpg'
 
 
 
@@ -17,11 +17,11 @@ const TopNavBarManager = () => (
             TrackR
           </a>
           <a class="navbar-item" href="/home">
-            <img
+            {/* <img
               src={Profilepicture}
               class="profilepicture"
               alt="profilepicture"
-            />
+            /> */}
           </a>
 
           <a

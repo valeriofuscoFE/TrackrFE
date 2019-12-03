@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNavBarAdmin from './navbars/topNavBarAdmin';
-import Profilepicture from './assets/profilepicture.jpg'
+//import Profilepicture from '../../assets/profilepicture.jpg'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
@@ -45,12 +45,14 @@ const StudentsKPI = () => (
       <hr></hr>
       {/* FIRST STUDENT KPI */}
       <div class="columns is-gapless  is-centered">
-        <div class="column topColumn"> <img
+        <div class="column topColumn"> 
+        {/* <img
                               src={Profilepicture}
                               class="profilepicture"
                               alt="profilepicture"
                               width="40px"
-                            /></div>
+                            /> */}
+                            </div>
         <div class="column topColumn">Krzysztof</div>
         <div class="column topColumn">Nadlonek</div>
         <div class="column topColumn">Application sent to Uber </div>
@@ -64,12 +66,14 @@ const StudentsKPI = () => (
 
       {/* FIRST STUDENT KPI */}
       <div class="columns is-gapless  is-centered">
-        <div class="column topColumn"> <img
+        <div class="column topColumn"> 
+        {/* <img
                               src={Profilepicture}
                               class="profilepicture"
                               alt="profilepicture"
                               width="40px"
-                            /></div>
+                            /> */}
+                            </div>
         <div class="column topColumn">Krzysztof</div>
         <div class="column topColumn">Nadlonek</div>
         <div class="column topColumn">Application sent to Uber </div>

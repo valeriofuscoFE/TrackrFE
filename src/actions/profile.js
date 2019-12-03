@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import{
 	GET_PROFILE
-} from './types'
+} from './actions/types'
 
 
 // GET THE USER PROFILE 
@@ -10,7 +10,7 @@ import{
 
 export const getCurrentProfile =() => async dispatch =>{
 try {
-	const res = await axios.get('/my/api/myprofile/yo/rob/prepare/pancakes');
+	const res = await axios.get('http://localhost:4000/user');
 
 	dispatch({
 		type:GET_PROFILE,

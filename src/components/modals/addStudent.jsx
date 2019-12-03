@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Box,Container, Columns,Column} from 'react-bulma-components'
-import Profilepicture from './assets/profilepicture.jpg'
+//import Profilepicture from '../../assets/profilepicture.jpg'
 
 
 
@@ -45,12 +45,12 @@ class AddStudent extends Component {
                     <label class="label">
                       <div class="columns">
                         <div class="column">
-                          <img
+                          {/* <img
                             src={Profilepicture}
                             class="profilepicture"
                             alt="profilepicture"
                             width="50px"
-                          />
+                          /> */}
                         </div>
                         <div class="column is-8 is-centered">
                           <h6>Add Student</h6>

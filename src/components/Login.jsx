@@ -1,15 +1,16 @@
-import React, { Fragment,useState } from 'react';
+import React, { Fragment, useState, Redirect } from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {login} from '../../actions/auth'
+import {login} from '../actions/auth'
+import ManagerDashboard from './managerDashboard';
 
 const Login = ({login , isAuthenticated}) => {
 	const [formData,setFormData] = useState({
 		email:'',
 		password:''
 	})
-	const {}
-}
+
+
 
 //FOR REGISTER COMPONENT 
 
@@ -54,20 +55,15 @@ const onSubmit = async e => {
 
 //Redirect if logged in   SAME THING ON REGISTER COMPONENT
 if(isAuthenticated){
-	return <Redirect to="/student/dashboard" />
+	return <Redirect to="./managerDashboard" />
 }  //TO DO THIS ACTION U NEED TO SET UP REACT ROUTER ! WITH ALL THE ROUTES 
-
-
-
-
-
 // FRAGMENT IS  <>  </>
 return (
 	<Fragment>  
-     
+    <ManagerDashboard/> 
 	</Fragment>
 )
-
+}
 Login.propTypes={
 	login: PropTypes.func.isRequired, //SAME ON REGISTER COMPONENT
 	isAuthenticated: PropTypes.bool,

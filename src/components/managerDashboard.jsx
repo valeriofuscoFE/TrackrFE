@@ -1,7 +1,7 @@
 import React from 'react';
 import TopNavBarManager from './navbars/topNavBarManager';
-import Diagrampicture from './assets/diagrampicture.png';
-import Diagrampicture2 from './assets/diagrampicture2.png';
+//import Diagrampicture from '../assets/diagrampicture.png';
+//import Diagrampicture2 from '../assets/diagrampicture2.png';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
@@ -19,24 +19,24 @@ const ManagerDashboard = () => (
           <div class="columns">
             <div class="column is-12">
                 <button class=" button is-pulled-left" id="buttonBlack">EXPORT</button>
-            <img
+            {/* <img
               src={Diagrampicture}
               width="60%"
               class="diagrampicture"
               alt="diagrampicture"
-            />
+            /> */}
             </div>
           </div>
 
           <div class="columns">
             <div class="column is-12">
                 <button class=" button is-pulled-left" id="buttonBlack">EXPORT</button>
-            <img
+            {/* <img
               src={Diagrampicture2}
               width="60%"
               class="diagrampicture"
               alt="diagrampicture"
-            />
+            /> */}
             </div>
           </div>
 
