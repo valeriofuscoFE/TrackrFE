@@ -8,8 +8,8 @@ import {loadUser} from './actions/auth'
 //import TopNavBar from './components/navbars/topNavBar';
 // import sideNavBar from './sideNavBar';
 import landingPage from './components/landingPage';
-// import ManagerDashboard from './components/dashboard/managerDashboard';
-// import StudentDashboard from './components/dashboard/studentDashboard';
+ import ManagerDashboard from './components/managerDashboard';
+ import StudentDashboard from './components/studentDashboard';
 // import StudentMyInfo from './components/modals/studentMyInfo';
 // import ManagerMyInfo from './components/modals/managerMyInfo';
 // import AddStudent from './components/modals/addStudent';
@@ -30,6 +30,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
+import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
 
 
 
@@ -40,7 +41,7 @@ if(localStorage.token){
 const App = () => {
 	useEffect(() => {
 		store.dispatch(loadUser());
-	}, [])  //WE HAVE BRACKETS BECAUSE WE WANT THAT WE WILL RUN ONLY ONCE 
+	}, [])  
 
 	return (
 
@@ -53,7 +54,8 @@ const App = () => {
 					<Switch>
 						<Route exact path ='/register' component={landingPage}/>
 						<Route exact path ='/Login' component={Login}/>
-						{/* <PrivateRoute exact path ='/dashboard' component={adminDashboard}/> */}
+						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
+						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
 					</Switch>
 				</section>
 				<Route exact path ='/admin' component = {adminDashboard}/>

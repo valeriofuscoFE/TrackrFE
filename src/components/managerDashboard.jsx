@@ -1,7 +1,7 @@
 import React from 'react';
 import TopNavBarManager from './navbars/topNavBarManager';
-import Diagrampicture from './assets/diagrampicture.png';
-import Diagrampicture2 from './assets/diagrampicture2.png';
+import Diagrampicture from '../assets/diagrampicture.png';
+import Diagrampicture2 from '../assets/diagrampicture2.png';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
