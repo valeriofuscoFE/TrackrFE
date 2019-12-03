@@ -5,11 +5,11 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 // import {Container, Columns,Column} from 'react-bulma-components'
 import './styles/style.scss';
 import {loadUser} from './actions/auth'
-// import TopNavBar from './components/navbars/topNavBar';
+//import TopNavBar from './components/navbars/topNavBar';
 // import sideNavBar from './sideNavBar';
 import landingPage from './components/landingPage';
-// import ManagerDashboard from './components/dashboard/managerDashboard';
-// import StudentDashboard from './components/dashboard/studentDashboard';
+ import ManagerDashboard from './components/managerDashboard';
+ import StudentDashboard from './components/studentDashboard';
 // import StudentMyInfo from './components/modals/studentMyInfo';
 // import ManagerMyInfo from './components/modals/managerMyInfo';
 // import AddStudent from './components/modals/addStudent';
@@ -24,16 +24,13 @@ import adminDashboard from './components/adminDashboard';
 // import StudentsList from './components/studentsList';
 // import Test from './test';
 // import UserList from './components/userList';
-import login from './components/login';
+import Login from './components/Login';
 //REDUX
 import {Provider} from 'react-redux'
 import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
-<<<<<<< Updated upstream
-=======
-// import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
->>>>>>> Stashed changes
+import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
 
 
 
@@ -44,20 +41,21 @@ if(localStorage.token){
 const App = () => {
 	useEffect(() => {
 		store.dispatch(loadUser());
-	}, [])  //WE HAVE BRACKETS BECAUSE WE WANT THAT WE WILL RUN ONLY ONCE 
+	}, [])  
 
 	return (
 
 		<Provider store={store}>
 		<Router>
 			<Fragment>
-{/* 		
+{/* 
 				<Route exact path ='/' component = {Landing}/> */}
 				<section className="container">
 					<Switch>
 						<Route exact path ='/register' component={landingPage}/>
-						<Route exact path ='/login' component={login}/>
-						{/* <PrivateRoute exact path ='/dashboard' component={adminDashboard}/> */}
+						<Route exact path ='/Login' component={Login}/>
+						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
+						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
 					</Switch>
 				</section>
 				<Route exact path ='/admin' component = {adminDashboard}/>

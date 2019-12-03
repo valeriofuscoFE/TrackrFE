@@ -55,10 +55,6 @@ const onSubmit = async e => {
 	login(email,password)  //EXAMPLES
 }
 
-//Redirect if logged in   SAME THING ON REGISTER COMPONENT
-if(isAuthenticated){
-	return <Redirect to="/student/dashboard" />
-}  //TO DO THIS ACTION U NEED TO SET UP REACT ROUTER ! WITH ALL THE ROUTES 
 
 if (isAuthenticated) {
   return <Redirect to='/dashboard' />;
