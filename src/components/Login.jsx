@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {login} from '../actions/auth'
 
+
+
 const Login = ({login , isAuthenticated}) => {
 	const [formData,setFormData] = useState({
 		email:'',
@@ -44,6 +46,7 @@ const Login = ({login , isAuthenticated}) => {
 // YOU HAVE TO DO THE SAME THING ON REGISTER COMPONENT BUT CHANGE THE ACTION WITH register(name,email,password ecc...)
 const {email,password} = formData;
 
+
 const onChange = e =>
 setFormData({...formData,[e.target.name]: e.target.value});
 
@@ -56,6 +59,11 @@ const onSubmit = async e => {
 if(isAuthenticated){
 	return <Redirect to="/student/dashboard" />
 }  //TO DO THIS ACTION U NEED TO SET UP REACT ROUTER ! WITH ALL THE ROUTES 
+
+if (isAuthenticated) {
+  return <Redirect to='/dashboard' />;
+}
+
 
 
 

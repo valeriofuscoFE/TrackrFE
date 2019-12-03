@@ -30,6 +30,10 @@ import {Provider} from 'react-redux'
 import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
+<<<<<<< Updated upstream
+=======
+// import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
+>>>>>>> Stashed changes
 
 
 
