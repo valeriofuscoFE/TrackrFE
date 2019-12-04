@@ -55,7 +55,6 @@ const onSubmit = async e => {
 	login(email,password)  //EXAMPLES
 }
 
-
 if (isAuthenticated) {
   return <Redirect to='/dashboard' />;
 }

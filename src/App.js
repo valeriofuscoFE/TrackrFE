@@ -30,9 +30,6 @@ import {Provider} from 'react-redux'
 import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
-import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
-
-
 
 
 if(localStorage.token){
@@ -53,7 +50,7 @@ const App = () => {
 				<section className="container">
 					<Switch>
 						<Route exact path ='/register' component={landingPage}/>
-						<Route exact path ='/Login' component={Login}/>
+						<Route exact path ='/login' component={Login}/>
 						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
 						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
 					</Switch>

@@ -17,7 +17,7 @@ export const loadUser = ()=> async dispatch => {
 	}
 
 	try {
-		const res = await axios.get('http://localhost:4000/user/me');
+		const res = await axios.get(process.env.URL + 'user/me');
 		dispatch({
 			type:USER_LOADED,
 			payload:res.data
@@ -43,7 +43,7 @@ export const register = ({name ,surname, email,password,role,schoolName, gitURL}
 	 const body = JSON.stringify({name ,surname, email,password,role,schoolName, gitURL})
 
 	 try {
-		 const res = await axios.post('http://localhost:4000/user/register',body,config);
+		 const res = await axios.post(process.env.URL + 'user/register',body,config);
 		 dispatch({
 			 type:REGISTER_SUCCESS,
 			 payload:res.data
@@ -69,7 +69,7 @@ export const login = (email,password) => async dispatch => {
 	const body = JSON.stringify({email,password})
 
 	try {
-		const res = await axios.post("http://localhost:4000/user/login",body,config);
+		const res = await axios.post(process.env.URL + "user/login",body,config);
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload:res.data.token,
