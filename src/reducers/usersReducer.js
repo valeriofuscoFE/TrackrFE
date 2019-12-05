@@ -1,9 +1,8 @@
-import {GET_PROFILE} from '../actions/types';
+import {FETCH_USERS} from '../actions/types';
 
 const initialState ={
-	profile:null,
-	applications:[],
-	loading:true
+	users:[],
+	// loading:true
 }
 
 export default function(state = initialState, action ){
@@ -11,11 +10,12 @@ export default function(state = initialState, action ){
  
 
  switch(type){
-	 case GET_PROFILE:
+	 case FETCH_USERS:
+		 console.log("reducer")
 		 return{
 			 ...state,
-			 profile:payload,
-			 loading:false
+			 users:payload,
+			//  loading:false
 		 }
 		default:
 			return state;

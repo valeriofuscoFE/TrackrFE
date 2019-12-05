@@ -3,23 +3,27 @@ import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	USER_LOADED,
-	AUTH_ERROR 
+	AUTH_ERROR,
+	LOGIN_FAIL,
+	LOGIN_SUCCESS,
 } from './types';
 
 import setAuthToken from '../utils/setAuthToken'
 
-//Load User
+//Load User 
 export const loadUser = ()=> async dispatch => {
 	if(localStorage.token){
     setAuthToken(localStorage.token);
 	}
 
 	try {
-		const res = await axios.get('/path/for/auth');
+		const res = await axios.get('http://localhost:4000/user/me');
 		dispatch({
 			type:USER_LOADED,
 			payload:res.data
 		})
+	 
+	
 	} catch (err) {
 		dispatch({
 			type:AUTH_ERROR
@@ -28,31 +32,23 @@ export const loadUser = ()=> async dispatch => {
 }
 
 
-
-
-
-
-
-
 //Register User 
-export const register = ({name,email,password}) => async dispatch => {
+export const register = ({name ,surname, email,password,role,schoolName, gitURL}) => async dispatch => {
 	 const config = {
 		 headers:{
 			 'Content-Type':'application/json'
 		 }
 	 }
 
-	 const body = JSON.stringify({name,email,password})
+	 const body = JSON.stringify({name ,surname, email,password,role,schoolName, gitURL})
 
 	 try {
-		 const res = await axios.post('/api/route/change/it',body,config);
+		 const res = await axios.post('http://localhost:4000/user/register',body,config);
 		 dispatch({
 			 type:REGISTER_SUCCESS,
-			 payload:res.data  //RESPONSE OF OUR POST ACTION
+			 payload:res.data
 		
 		});
-
-		dispatch(loadUser());
 
 	 } catch (err) {
 		 dispatch({
@@ -73,16 +69,16 @@ export const login = (email,password) => async dispatch => {
 	const body = JSON.stringify({email,password})
 
 	try {
-		const res = await axios.post('/api/route/change/it',body,config);
+		const res = await axios.post("http://localhost:4000/user/login",body,config);
 		dispatch({
-			type:LOGIN_SUCCESS,
-			payload:res.data  //RESPONSE OF OUR POST ACTION
+			type: LOGIN_SUCCESS,
+			payload:res.data.token,
 	   
 	   });
-	   dispatch(loadUser());
+	   dispatch(loadUser())
 	} catch (err) {
 		dispatch({
-			type:LOGIN_FAIL
+			type: LOGIN_FAIL
 		})
 	}
 }
