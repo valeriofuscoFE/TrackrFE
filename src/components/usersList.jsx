@@ -17,7 +17,7 @@ const UsersList = ({fetchUsers,usersReducer}) => {
 
   const usersList = usersReducer.map(user=>(
     <div>
-       <div key={user._id} class="columns is-centered">
+       <div key={user._id} class="columns is-gapless is-centered">
        <div class="column topColumn">{user.role}</div>
        <div class="column topColumn">{user.name}</div>
        <div class="column topColumn">{user.surname}</div>
@@ -32,17 +32,43 @@ const UsersList = ({fetchUsers,usersReducer}) => {
   
 ))
 
+const [searchUser, setsearchUser] = useState("");
+const [searchResult, setSearchResult] = useState([]);
+
+const searchHandler = e =>{
+  setsearchUser(e.target.value);
+}
+
+useEffect(() => {
+  const results = usersReducer.filter(user=>
+    user.name.toString().toLowerCase().includes(searchUser.toLowerCase())
+  );
+
+  if (searchUser.length > 2)
+  return (
+  setSearchResult(results));
+}, [searchUser]);
+
+console.log("searchResult",searchResult)
+
   return (
   <>
     <TopNavBarAdmin />
 
     <Container>
       {/* SEARCH BAR */}
+      {/* SEARCH BAR */}
       <div class="columns">
-        <div class="column is-3 is-offset-9">
-          <input class="input" type="text" placeholder="SEARCH USER" />
+          <div class="column is-3 is-offset-9">
+            <input
+              class="input"
+              type="text"
+              placeholder="SEARCH STUDENT"
+              onChange={searchHandler}
+              value={searchUser}
+            />
+          </div>
         </div>
-      </div>
       {/* FIRST ROW */}
       <div class="columns  is-centered">
         <div class="column plusColumn is-4">USERS LIST</div>
@@ -64,6 +90,26 @@ const UsersList = ({fetchUsers,usersReducer}) => {
     
       </div>
       <hr></hr>
+       {/* SEARCH MAPPING*/}
+
+       <div>
+          {searchResult.map(search => (
+              <div>
+              <div  key={search._id} class="columns is-gapless is-centered" >
+              <div  class="column is-3 filteredColumn">{search.role}</div>
+              <div  class="column is-2 filteredColumn">{search.name}</div>
+              <div  class="column is-2 filteredColumn">{search.surname}</div>
+              <div  class="column is-3 filteredColumn">{search.email}</div>
+              <div  class="column is-2 filteredColumn">{search.school}</div>
+              <button class="button" id="buttonDelete">
+                    X
+              </button>
+            </div>
+            <hr></hr>
+            </div>
+          ))}
+        </div>
+         {/* USERS LIST*/}
       <div>{usersList}</div>
     </Container>
   </>
