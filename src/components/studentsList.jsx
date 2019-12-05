@@ -17,12 +17,14 @@ useEffect(()=>{
 
 //DELETE USER
 
-const deleteUserHandler = (_id) => {
+const deleteUserHandler = async (id) => {
 
-  fetch("http://localhost:4000/user/" +_id , {
+  await fetch("http://localhost:4000/user/" + id , {
     method: "DELETE"
    
   });
+
+  console.log("id", id)
 }
 
 
@@ -35,7 +37,7 @@ const studentsList = usersReducer.map(student=>(
    <div  class="column is-3 topColumn">{student.email}</div>
    <div  class="column is-3 topColumn">{student.githubUrl}</div>
    <div  class="column is-2 topColumn">{student.school}</div>
-   <button class="button" id="buttonDelete" onClick={deleteUserHandler(student._id)}>
+   <button class="button" id="buttonDelete" onClick={()=> deleteUserHandler(student._id)}>
          X
    </button>
  </div>
@@ -122,7 +124,7 @@ console.log("searchResult",searchResult)
               <div  class="column is-3 filteredColumn">{search.githubUrl}</div>
               <div  class="column is-2 filteredColumn">{search.school}</div>
               <button class="button" id="buttonDelete" onClick={deleteUserHandler(search._id)}>
-                  X
+                   X
               </button>
             </div>
             <hr></hr>
