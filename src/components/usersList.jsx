@@ -15,6 +15,16 @@ const UsersList = ({fetchUsers,usersReducer}) => {
   },[])
  
 
+  //DELETE USER
+
+const deleteUserHandler = (_id) => {
+
+  fetch("http://localhost:4000/user/" +_id , {
+    method: "DELETE"
+   
+  });
+}
+
   const usersList = usersReducer.map(user=>(
     <div>
        <div key={user._id} class="columns is-gapless is-centered">
@@ -23,9 +33,9 @@ const UsersList = ({fetchUsers,usersReducer}) => {
        <div class="column topColumn">{user.surname}</div>
        <div class="column topColumn">{user.email}</div>
        <div class="column topColumn">{user.school}</div>
-       <button class="button" id="buttonDelete">
+       <button class="button" id="buttonDelete" onClick={deleteUserHandler(user._id)}>
          X
-       </button>
+   </button>
      </div>
      <hr></hr>
      </div>
@@ -101,8 +111,8 @@ console.log("searchResult",searchResult)
               <div  class="column is-2 filteredColumn">{search.surname}</div>
               <div  class="column is-3 filteredColumn">{search.email}</div>
               <div  class="column is-2 filteredColumn">{search.school}</div>
-              <button class="button" id="buttonDelete">
-                    X
+              <button class="button" id="buttonDelete" onClick={deleteUserHandler(search._id)}>
+         X
               </button>
             </div>
             <hr></hr>

@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-const StudentsList = ({fetchUsers,usersReducer}) => {
+const StudentsList = ({fetchUsers, usersReducer}) => {
 
 useEffect(()=>{
  
@@ -15,7 +15,19 @@ useEffect(()=>{
 },[])
 
 
+//DELETE USER
+
+const deleteUserHandler = (_id) => {
+
+  fetch("http://localhost:4000/user/" +_id , {
+    method: "DELETE"
+   
+  });
+}
+
+
 const studentsList = usersReducer.map(student=>(
+
   <div>
    <div  key={student._id} class="columns is-gapless is-centered" >
    <div  class="column is-2 topColumn">{student.name}</div>
@@ -23,7 +35,7 @@ const studentsList = usersReducer.map(student=>(
    <div  class="column is-3 topColumn">{student.email}</div>
    <div  class="column is-3 topColumn">{student.githubUrl}</div>
    <div  class="column is-2 topColumn">{student.school}</div>
-   <button class="button" id="buttonDelete">
+   <button class="button" id="buttonDelete" onClick={deleteUserHandler(student._id)}>
          X
    </button>
  </div>
@@ -31,6 +43,7 @@ const studentsList = usersReducer.map(student=>(
  </div>
  
 ))
+
 
 const [searchStudent, setSearchStudent] = useState("");
 const [searchResult, setSearchResult] = useState([]);
@@ -108,8 +121,8 @@ console.log("searchResult",searchResult)
               <div  class="column is-3 filteredColumn">{search.email}</div>
               <div  class="column is-3 filteredColumn">{search.githubUrl}</div>
               <div  class="column is-2 filteredColumn">{search.school}</div>
-              <button class="button" id="buttonDelete">
-                    X
+              <button class="button" id="buttonDelete" onClick={deleteUserHandler(search._id)}>
+                  X
               </button>
             </div>
             <hr></hr>
@@ -126,6 +139,7 @@ console.log("searchResult",searchResult)
 
   const mapStateToProps = state => ({
     usersReducer: state.usersReducer.users
+   
   });
 
 
