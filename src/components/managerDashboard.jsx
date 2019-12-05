@@ -16,7 +16,7 @@ const ManagerDashboard = () => (
         {/* KPI */}
         <div class="column plusColumn is-8">
 
-          <div class="columns">
+          <div class="columns" id="managerImage1">
             <div class="column is-12">
                 <button class=" button is-pulled-left" id="buttonBlack">EXPORT</button>
             <img
@@ -28,7 +28,7 @@ const ManagerDashboard = () => (
             </div>
           </div>
 
-          <div class="columns">
+          <div class="columns" id="managerImage2">
             <div class="column is-12">
                 <button class=" button is-pulled-left" id="buttonBlack">EXPORT</button>
             <img

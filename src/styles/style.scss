@@ -14,6 +14,22 @@ body {
     // background-color: red;
 }
 
+
+#managerImage1 { 
+    background-image: url('diagrampicture1.png');
+    background-repeat: no-repeat;
+    max-width: 100%;
+    height: auto;
+}
+
+#managerImage2 { 
+    background-image: url('diagrampicture2.png');
+    background-repeat: no-repeat;
+    max-width: 100%;
+    height: auto;
+}
+
+
 #buttonBlack{
     @include backgroundText($primaryBtnBlack,$primarytextWhite);
     &:hover{color: $secondaryHover;}
