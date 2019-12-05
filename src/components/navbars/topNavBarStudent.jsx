@@ -1,6 +1,5 @@
 import React from 'react';
-import {Container, Columns,Column} from 'react-bulma-components';
-import Profilepicture from './assets/profilepicture.jpg'
+import {Container} from 'react-bulma-components';
 
 
 
@@ -18,7 +17,6 @@ const TopNavBar2 = () => (
           </a>
           <a class="navbar-item" href="/home">
             <img
-              src={Profilepicture}
               class="profilepicture"
               alt="profilepicture"
             />

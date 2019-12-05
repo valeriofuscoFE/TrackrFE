@@ -1,55 +1,102 @@
-import React from 'react';
+import React , {useState} from 'react';
+import TopNavBar from './navbars/topNavBar'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../actions/auth';
+import PropTypes from 'prop-types';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
 
 
-const LandingPage = () => (
+const LandingPage = ({register,isRegistered}) => {
+	const [formData, setFormData] = useState({
+		name: '',
+		surname:'',
+		email: '',
+		password: '',
+		role:'',
+		schoolName:'',
+		gitURL:''
+	  });
 
+	  const onChange = e =>
+	  setFormData({ ...formData, [e.target.name]: e.target.value });
+
+
+	  const onSubmit = async e => {
+		e.preventDefault();
+		register({ name ,surname, email,password,role,schoolName, gitURL  });
+
+       console.log(formData)
+	  }
+	
+	  const { name ,surname, email,password,role, schoolName,gitURL   } = formData;
+	  
+	
+
+
+
+	return(
 <Container>
-<div class="columns">
-  <div class="column"></div>
-  <div class="column"></div>
-  <div class="column is-one-third registerColumn">
-  <div class="field">
-  <label class="label">REGISTER</label>
+<TopNavBar/>
+<form className="form"  onSubmit={e => onSubmit(e)}> 
+<div className="columns">
+  <div className="column"></div>
+  <div className="column"></div>
+  <div className="column is-one-third registerColumn">
+  <div className="field">
+  <label className="label">REGISTER</label>
 </div>
 
-<div class="field">
-  <label class="label"><small>NAME</small></label>
-  <div class="control">
-    <input class="input" type="text" placeholder="name"/>
+<div className="field">
+  <label className="label"><small>NAME</small></label>
+  <div className="control">
+    <input name='name' value={name} className="input" type="text" placeholder="name" onChange={e => onChange(e)}/>
   </div>
   
 </div>
 
-<div class="field">
-  <label class="label"><small>SURNAME</small></label>
-  <div class="control">
-    <input class="input" type="text" placeholder="surname"/>
+<div className="field">
+  <label className="label"><small>SURNAME</small></label>
+  <div className="control">
+    <input name='surname' className="input" type="text" placeholder="surname" value={surname} onChange={e => onChange(e)}/>
   </div>
  
 </div>
 
 
-<div class="field">
-  <label class="label"><small>EMAIL</small></label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input" type="email" placeholder="Email input" value="@"/>
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
+<div className="field">
+  <label className="label"><small>EMAIL</small></label>
+  <div className="control has-icons-left has-icons-right">
+    <input name='email' className="input" type="text" placeholder="Email input" value={email} onChange={e => onChange(e)}/>
+    <span className="icon is-small is-left">
+      <i className="fas fa-envelope"></i>
     </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
+    <span className="icon is-small is-right">
+      <i className="fas fa-exclamation-triangle"></i>
     </span>
   </div>
 </div>
 
-<div class="field">
-  <label class="label"><small>ROLE</small></label>
-  <div class="control">
-    <div class="select">
-      <select id="roleOption">
-        <option id="roleOption2">School Manager</option>
+<div className="field">
+  <label className="label"><small>PASSWORD</small></label>
+  <div className="control has-icons-left has-icons-right">
+    <input name='password' className="input" type="password" placeholder="PASSWORD" value={password} onChange={e => onChange(e)}/>
+    <span className="icon is-small is-left">
+      <i className="fas fa-envelope"></i>
+    </span>
+    <span className="icon is-small is-right">
+      <i className="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+</div>
+
+<div className="field">
+  <label className="label"><small>ROLE</small></label>
+  <div className="control">
+    <div className="select">
+      <select name="role" value={role} onChange={e => onChange(e)}   id="roleOption" >
+        <option>School Manager</option>
         <option>Student</option>
         <option>Admin</option>
       </select>
@@ -57,46 +104,61 @@ const LandingPage = () => (
   </div>
 </div>
 
-<div class="field">
-  <label class="label"><small>SCHOOL NAME</small></label>
-  <div class="control">
-    <input class="input" type="text" placeholder="school name"/>
+<div className="field">
+  <label className="label"><small>SCHOOL NAME</small></label>
+  <div className="control">
+    <input name='schoolName' className="input" type="text" placeholder="school name" value={schoolName} onChange={e => onChange(e)}/>
   </div>
  
 </div>
 
-<div class="field">
-  <label class="label"><small>githubURL</small></label>
-  <div class="control">
-    <input class="input" type="text" placeholder="url"/>
+<div className="field">
+  <label className="label"><small>githubURL</small></label>
+  <div className="control">
+    <input name='gitURL' className="input" type="text" placeholder="url" value={gitURL}  onChange={e => onChange(e)}/>
   </div>
   
 </div>
 
 
-{/* <div class="field">
-  <div class="control">
-    <label class="checkbox">
+{/* <div className="field">
+  <div className="control">
+    <label className="checkbox">
       <input type="checkbox"/>
       I agree to the <a href="#">terms and conditions</a>
     </label>
   </div>
 </div> */}
 
-<div class="field is-grouped">
-  <div class="control">
-    <button class="button" id="buttonWhite">Submit</button>
+<div className="field is-grouped">
+  <div className="control">
+    <button className="button" id="buttonWhite">Submit</button>
   </div>
-  <div class="control">
-    <button class="button buttonDelete" id="buttonDelete">Cancel</button>
+  <div className="control">
+    <button className="button buttonDelete" id="buttonDelete">Cancel</button>
   </div>
 </div>
   </div>
-  <div class="column"></div>
+  <div className="column"></div>
 </div>
+</form>
 </Container>
 
   )
+ 
+}
 
 
-  export default LandingPage;
+LandingPage.propTypes = {
+	register: PropTypes.func.isRequired,
+	isRegistered: PropTypes.bool
+  };
+
+  const mapStateToProps = state => ({
+	isRegistered: state.auth.isAuthenticated
+  });
+
+  export default connect(
+	mapStateToProps,
+	{ register }
+  )(LandingPage);
