@@ -15,7 +15,7 @@ import landingPage from './components/landingPage';
 // import AddStudent from './components/modals/addStudent';
 // import SchoolDetails from './components/modals/schoolDetails';
 import adminDashboard from './components/adminDashboard';
-// import Footer from './components/footer';
+ import Footer from './components/footer';
 // import AddJobApplication from './components/modals/addJobApplication';
 // import CompanyInfoModal from './components/modals/companyInfoModal';
 // import JobInfoModal from './components/modals/jobInfoModal';
@@ -58,7 +58,7 @@ const App = () => {
 				<Route exact path ='/admin' component = {adminDashboard}/>
 			</Fragment>
 		</Router>
-    
+         <Footer/>
 		</Provider>
 
 		  );
