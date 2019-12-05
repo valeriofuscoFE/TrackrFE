@@ -213,6 +213,16 @@ body {
     box-shadow: $primaryBorderShadow;
 }
 
+.filteredColumn{
+    @include backgroundText($secondaryBgColor,$primarytextWhite);
+    margin-top: 10px;
+    margin-right:10px;
+    text-align: center;
+    border-radius:$primaryButtonRadius;
+    border:$secondaryCardBorderColor;
+    box-shadow: $primaryBorderShadow;
+}
+
 .logoButton{
     box-shadow: $primaryBorderShadow;
     border-radius:$primaryButtonRadius;
