@@ -57,6 +57,4 @@ const TopNavBar2 = () => (
     </Container>
   </>
 );
-
-
   export default TopNavBar2;

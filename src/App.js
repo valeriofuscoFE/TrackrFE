@@ -16,7 +16,7 @@ import landingPage from './components/landingPage';
 // import AddStudent from './components/modals/addStudent';
 // import SchoolDetails from './components/modals/schoolDetails';
 import adminDashboard from './components/adminDashboard';
-// import Footer from './components/footer';
+ import Footer from './components/footer';
 // import AddJobApplication from './components/modals/addJobApplication';
 // import CompanyInfoModal from './components/modals/companyInfoModal';
 // import JobInfoModal from './components/modals/jobInfoModal';
@@ -32,8 +32,6 @@ import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
 // import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
-
-
 
 
 if(localStorage.token){
@@ -64,7 +62,7 @@ const App = () => {
 				<Route exact path ='/admin' component = {adminDashboard}/>
 			</Fragment>
 		</Router>
-    
+         <Footer/>
 		</Provider>
 
 		  );

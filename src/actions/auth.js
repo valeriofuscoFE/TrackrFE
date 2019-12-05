@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import {
 	REGISTER_SUCCESS,
@@ -7,11 +8,16 @@ import {
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
 } from './types';
+// import {URL} from "../config"
 
 import setAuthToken from '../utils/setAuthToken'
+// const dotenv = require('dotenv');
+// const env = dotenv.config().parsed;
 
 //Load User 
 export const loadUser = ()=> async dispatch => {
+
+
 	if(localStorage.token){
     setAuthToken(localStorage.token);
 	}
