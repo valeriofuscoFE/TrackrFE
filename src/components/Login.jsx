@@ -22,7 +22,6 @@ const onSubmit = async e => {
 }
 
 if (isAuthenticated) {
-<<<<<<< HEAD
   // return <Redirect to='/admin' />;
   if (user.role =="Student") 
   return <Redirect to='/dashboard'/>
