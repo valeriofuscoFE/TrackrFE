@@ -5,26 +5,19 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 import { getCurrentProfile } from '../actions/profile'
 import { getSchools } from '../actions/schools'
-import PropTypes from 'prop-types';
-import store from '../store'
-import {loadUser} from '../actions/auth'
+
 import {connect} from 'react-redux';
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  profile: state.profile
-})
+const mapStateToProps = state => state;
 
-const AdminDashboard = () => {
-// const [profile, setProfile] = useState(null)
+const mapDispatchToProps = dispatch => ({
+  getSchoolsThunk: () =>dispatch(getSchools()),
+});
 
-  useEffect(()=>{
-    console.log("useEffect is running")
-    store.dispatch(getCurrentProfile());
-    store.dispatch(loadUser());
-    // setProfile(profile)
-    // getSchools();
-  },[]);
+class AdminDashboard extends React.Component {
+
+
+render() { 
 
   return(
 <>
@@ -45,15 +38,23 @@ const AdminDashboard = () => {
     Add School
   </div>
 </div>
-
+<div className = "row">
 {/* THIRD ROW */}
+{this.props.schools.schools && this.props.schools.schools.map((school) => {
+         return (
+           
 <div class="columns  is-centered">
   <div class="column bottomColumn" id="bottomColumn1">
       <button class="logoButton" disabled><strong>S</strong></button>
-    School 1<hr></hr><small>Manager:</small>
+    {school.name}<hr></hr><small>Manager:</small>
    
   </div>
-  <div class="column bottomColumn"id="bottomColumn2">
+  </div>
+
+         )
+})}
+  </div>
+  {/* <div class="column bottomColumn"id="bottomColumn2">
   <button class="logoButton" disabled><strong>S</strong></button>
   School 2<hr></hr><small>Manager:</small>
   </div>
@@ -68,20 +69,22 @@ const AdminDashboard = () => {
   <div class="column bottomColumn"id="bottomColumn5">
   <button class="logoButton" disabled><strong>S</strong></button>
   School 5<hr></hr><small>Manager:</small>
-  </div>
-</div>
+  </div> */}
+
 
 </Container>
+
 </>
   )
 }
-AdminDashboard.propTypes={
-  getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
-}     
+
+componentDidMount=async()=>{
+  await this.props.getSchoolsThunk();
+
+ }
+}
+   
 
 
 
-
-  export default connect(mapStateToProps,{getCurrentProfile})(AdminDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

@@ -2,7 +2,6 @@ import {GET_PROFILE} from '../actions/types';
 
 const initialState ={
 	profile:null,
-	applications:[],
 	loading:true
 }
 

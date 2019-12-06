@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {login} from '../actions/auth'
 
-const Login = ({login , isAuthenticated}) => {
+const Login = ({login , isAuthenticated, user}) => {
 	const [formData,setFormData] = useState({
 		email:'',
 		password:''
@@ -22,9 +22,17 @@ const onSubmit = async e => {
 }
 
 if (isAuthenticated) {
-  return <Redirect to='/dashboard' />;
-}
-
+  // return <Redirect to='/admin' />;
+  if (user.role =="Student") 
+  return <Redirect to='/dashboard'/>
+  if (user.role =="Manager") 
+  return <Redirect to='/manager'/>
+  if (user.role =="Admin") 
+  return <Redirect to='/admin'/>
+  
+} 
+// var role = user.user.role
+console.log(user, "user")
 
 return (
 	<Fragment>
@@ -94,7 +102,9 @@ Login.propTypes={
 
 
 const mapStateToProps = state => ({  
-	isAuthenticated:state.auth.isAuthenticated
+  isAuthenticated:state.auth.isAuthenticated,
+  user: state.auth.user
+
 });
 
 export default connect(

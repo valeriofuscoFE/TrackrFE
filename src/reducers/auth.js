@@ -33,7 +33,8 @@ import {
 		  ...state,
 		  ...payload,
 		  isAuthenticated: true,
-		  loading: false
+		  loading: false,
+		  user: payload
 		};
 	  case REGISTER_FAIL:
 	  case AUTH_ERROR:
@@ -43,7 +44,7 @@ import {
 		  ...state,
 		  token: null,
 		  isAuthenticated: false,
-		  loading: false
+		  loading: false,
 		};
 	  default:
 		return state;

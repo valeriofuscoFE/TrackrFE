@@ -2,7 +2,10 @@
 import React from 'react';
 import {Container, Columns,Column} from 'react-bulma-components';
 
-
+const logOut = () => {
+  localStorage.removeItem("token")
+  window.location.href = '/login'
+}
 
 const TopNavBarManager = () => (
   <>
@@ -51,7 +54,7 @@ const TopNavBarManager = () => (
             </div>
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button" id="buttonWhite">LOG OUT</a>
+                <a class="button" id="buttonWhite" onClick={()=> logOut()}>LOG OUT</a>
               </div>
             </div>
           </div>
