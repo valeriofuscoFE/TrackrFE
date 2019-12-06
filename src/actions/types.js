@@ -9,6 +9,11 @@ export const GET_SCHOOLS = 'GET_SCHOOLS';
 export const GET_RECENTACTIVITIES='GET_RECENTACTIVITIES'
 export const GET_STUD_NAME='GET_STUD_NAME'
 export const GET_APPLICATION_COUNT='GET_APPLICATION_COUNT'
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 48cb99a2cb798fa960429cd254a6f4fed9a0c8d7
 
 
 
