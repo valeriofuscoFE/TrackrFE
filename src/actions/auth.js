@@ -21,14 +21,15 @@ export const loadUser = ()=> async dispatch => {
 	if(localStorage.token){
     setAuthToken(localStorage.token);
 	}
-
+   
 	try {
 		const res = await axios.get('http://localhost:4000/user/me');
+		
 		dispatch({
 			type:USER_LOADED,
 			payload:res.data
 		})
-	 
+	
 	
 	} catch (err) {
 		dispatch({
