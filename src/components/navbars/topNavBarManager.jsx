@@ -1,8 +1,6 @@
+  
 import React from 'react';
 import {Container, Columns,Column} from 'react-bulma-components';
-
-
-
 
 const TopNavBarManager = () => (
   <>
@@ -60,6 +58,4 @@ const TopNavBarManager = () => (
     </Container>
   </>
 );
-
-
   export default TopNavBarManager;

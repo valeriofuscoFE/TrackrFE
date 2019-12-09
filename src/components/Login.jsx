@@ -21,7 +21,9 @@ const onSubmit = async e => {
 	login(email,password)
 }
 
-
+if (isAuthenticated) {
+  return <Redirect to='/manager' />;
+}
 
 
 return (
@@ -33,7 +35,7 @@ return (
   <div className="column"></div>
   <div className="column is-one-third registerColumn">
   <div className="field">
-  <label className="label">LOG IN</label>
+  <label className="label">LOGIN</label>
 </div>
 
 

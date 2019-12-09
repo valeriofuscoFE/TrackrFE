@@ -23,6 +23,7 @@ import Footer from './components/footer';
 // import TasksModal from 'components/modals/tasksModal';
 // import OfferModal from './components/modals/offerModal';
 import StudentsList from './components/studentsList';
+import StudentsKPI from './components/studentsKPI';
 // import Test from './test';
 import UsersList from './components/usersList';
 import Login from './components/Login';
@@ -32,8 +33,6 @@ import store from './store'
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
 // import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
-
-
 
 
 if(localStorage.token){
@@ -56,6 +55,7 @@ const App = () => {
 						<Route exact path ='/register' component={landingPage}/>
 						<Route exact path ='/Login' component={Login}/>
 						<Route path='/studentslist' component={StudentsList} />
+						<Route path='/studentskpi' component={StudentsKPI} />
 						<Route path='/userslist' component={UsersList} />
 						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
 						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>

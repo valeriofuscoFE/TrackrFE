@@ -33,7 +33,7 @@ const deleteUserHandler = (_id) => {
        <div class="column topColumn">{user.surname}</div>
        <div class="column topColumn">{user.email}</div>
        <div class="column topColumn">{user.school}</div>
-       <button class="button" id="buttonDelete" onClick={deleteUserHandler(user._id)}>
+       <button class="button" id="buttonDelete" onClick={()=>deleteUserHandler(user._id)}>
          X
    </button>
      </div>
@@ -91,7 +91,7 @@ console.log("searchResult",searchResult)
       <hr></hr>
 
       {/* SECOND ROW */}
-      <div class="columns  is-centered">
+      <div class="columns is-gapless  is-centered">
         <div class="column topColumn">Role</div>
         <div class="column topColumn">Name</div>
         <div class="column topColumn">Surname</div>

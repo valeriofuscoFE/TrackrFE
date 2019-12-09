@@ -15,7 +15,7 @@ useEffect(()=>{
 },[])
 
 
-//DELETE USER
+//DELETE STUDENT
 
 const deleteUserHandler = async (id) => {
 
@@ -103,7 +103,7 @@ console.log("searchResult",searchResult)
         </div>
    
         {/* SECOND ROW */}
-        <div class="columns is-centered">
+        <div class="columns is-gapless is-centered">
           <div class="column topColumn">Name</div>
           <div class="column topColumn">Surname</div>
           <div class="column topColumn">Email</div>

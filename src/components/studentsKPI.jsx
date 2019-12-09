@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNavBarAdmin from './navbars/topNavBarAdmin';
-import Profilepicture from './assets/profilepicture.jpg'
+import Profilepicture from '../assets/profilepicture.jpg'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
@@ -34,16 +34,15 @@ const StudentsKPI = () => (
       <hr></hr>
 
       {/* SECOND ROW */}
-      <div class="columns  is-centered">
+      <div class="columns is-gapless  is-centered">
         <div class="column topColumn">Image</div>
-        <div class="column topColumn">Name</div>
-        <div class="column topColumn">Surname</div>
+        <div class="column topColumn">Student Name</div>
+        <div class="column topColumn">Batch</div>
         <div class="column topColumn">Recent Application</div>
         <div class="column topColumn">Status</div>
-        <div class="column topColumn">Batch</div>
       </div>
       <hr></hr>
-      {/* FIRST STUDENT KPI */}
+      {/* FIRST COLUMNS OF STUDENT KPI */}
       <div class="columns is-gapless  is-centered">
         <div class="column topColumn"> <img
                               src={Profilepicture}
@@ -51,35 +50,14 @@ const StudentsKPI = () => (
                               alt="profilepicture"
                               width="40px"
                             /></div>
-        <div class="column topColumn">Krzysztof</div>
-        <div class="column topColumn">Nadlonek</div>
+        <div class="column topColumn">Krzysztof Nadlonek</div>
+        <div class="column topColumn">June 2019</div>
         <div class="column topColumn">Application sent to Uber </div>
         <div class="column topColumn">Accepted</div>
-        <div class="column topColumn">June 2019</div>
-        <button class="button" id="buttonDelete">
-          X
-        </button>
       </div>
       <hr></hr>
 
-      {/* FIRST STUDENT KPI */}
-      <div class="columns is-gapless  is-centered">
-        <div class="column topColumn"> <img
-                              src={Profilepicture}
-                              class="profilepicture"
-                              alt="profilepicture"
-                              width="40px"
-                            /></div>
-        <div class="column topColumn">Krzysztof</div>
-        <div class="column topColumn">Nadlonek</div>
-        <div class="column topColumn">Application sent to Uber </div>
-        <div class="column topColumn">Accepted</div>
-        <div class="column topColumn">June 2019</div>
-        <button class="button" id="buttonDelete">
-          X
-        </button>
-      </div>
-      <hr></hr>
+
     </Container>
   </>
 );

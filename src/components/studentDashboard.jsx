@@ -1,3 +1,4 @@
+
 import React , {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -83,10 +84,8 @@ return (
 
 </Container>
 </>
-
  
 )}
-
   StudentDashboard.propTypes={
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
