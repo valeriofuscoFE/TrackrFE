@@ -222,6 +222,7 @@ body {
     border-radius:$primaryButtonRadius;
     border:$secondaryCardBorderColor;
     box-shadow: $primaryBorderShadow;
+    word-wrap: break-word;
 }
 
 .logoButton{

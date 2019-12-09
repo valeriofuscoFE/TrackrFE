@@ -123,7 +123,7 @@ console.log("searchResult",searchResult)
               <div  class="column is-3 filteredColumn">{search.email}</div>
               <div  class="column is-3 filteredColumn">{search.githubUrl}</div>
               <div  class="column is-2 filteredColumn">{search.school}</div>
-              <button class="button" id="buttonDelete" onClick={deleteUserHandler(search._id)}>
+              <button class="button" id="buttonDelete" onClick={()=>deleteUserHandler(search._id)}>
                    X
               </button>
             </div>
