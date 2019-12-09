@@ -2,14 +2,15 @@ import{
     GET_RECENTACTIVITIES,
     GET_STUD_NAME
 } from './types'
+import setAuthToken from '../utils/setAuthToken'
 
 export const getRecentActivities =() => async dispatch =>{
 	
 	try {
-				var res = await fetch("http://localhost:4000/application", {
+        		var res = await fetch("http://localhost:4000/application", {
 				method: "GET",
 				headers: {
-					"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU3ODVlY2YzZTNhZDhhODAzYTEzOGIiLCJpYXQiOjE1NzU1NjMyNDYsImV4cCI6MTU3NTU3NDA0Nn0.BEPysR1yWKI3UWHpypNUoH7Ewoej7JXuDOflkrasQxw"
+					"Authorization": "Bearer " + localStorage.token
 				},
 			})
 			if (res.ok) {
@@ -29,10 +30,14 @@ export const getRecentActivities =() => async dispatch =>{
     export const getStudentName =() => async dispatch =>{
 	
         try {
+            if(localStorage.token){
+                setAuthToken(localStorage.token);
+                }
+
                   var res = await fetch("http://localhost:4000/user/", {
                         method: "GET",
                         headers: {
-                            "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU3ODVlY2YzZTNhZDhhODAzYTEzOGIiLCJpYXQiOjE1NzU1NjMyNDYsImV4cCI6MTU3NTU3NDA0Nn0.BEPysR1yWKI3UWHpypNUoH7Ewoej7JXuDOflkrasQxw"
+                            "Authorization": "Bearer " + localStorage.token
                         },
                     })
                     if (res.ok) {

@@ -59,9 +59,10 @@ const App = () => {
 						<Route path='/userslist' component={UsersList} />
 						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
 						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
+						 <PrivateRoute exact path='/admin' component={adminDashboard}/>
 					</Switch>
 				</section>
-				<Route exact path ='/admin' component = {adminDashboard}/>
+				
 			</Fragment>
 		</Router>
 		<Footer/>

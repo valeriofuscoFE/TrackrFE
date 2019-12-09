@@ -8,7 +8,7 @@ import AppCount from './manager'
 
 
 export default combineReducers({
-	auth,
+	auth,	
 	profile,
 	usersReducer,
 	applications,
