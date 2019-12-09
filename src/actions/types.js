@@ -6,7 +6,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const GET_PROFILE = 'GET_PROFILE';
 export const GET_SCHOOLS = 'GET_SCHOOLS'
-
+export const GET_JA = 'GET_JA'
+export const JA_ERROR = 'JA_ERROR'
 
 
 

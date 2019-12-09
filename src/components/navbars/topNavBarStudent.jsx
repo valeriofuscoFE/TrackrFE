@@ -1,30 +1,35 @@
 import React from 'react';
 import {Container} from 'react-bulma-components';
+import Modal from '../modals/Modal'
+import useModal from '../modals/useModal';
 
 
 
-const TopNavBar2 = () => (
+const TopNavBar2 = () => {
+const {isShowing, toggle} = useModal();
+
+return(
   <>
     <Container>
       <nav
-        class="navbar topNavBar"
+        className="navbar topNavBar"
         role="navigation"
         aria-label="main navigation"
       >
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/home">
+        <div className="navbar-brand">
+          <a className="navbar-item" href="/home">
             TrackR
           </a>
-          <a class="navbar-item" href="/home">
+          <a className="navbar-item" href="/home">
             <img
-              class="profilepicture"
+              className="profilepicture"
               alt="profilepicture"
             />
           </a>
 
           <a
             role="button"
-            class="navbar-burger burger"
+            className="navbar-burger burger"
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
@@ -35,20 +40,24 @@ const TopNavBar2 = () => (
           </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">HOME</a>
+        <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-start">
+            <a className="navbar-item">HOME</a>
           </div>
 
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button" id="buttonWhite">MY INFO</a>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+			  <button className="button-default" onClick={toggle}>Show Modal</button>
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+      />
               </div>
             </div>
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button" id="buttonWhite">LOG OUT</a>
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button" id="buttonWhite">LOG OUT</a>
               </div>
             </div>
           </div>
@@ -56,7 +65,8 @@ const TopNavBar2 = () => (
       </nav>
     </Container>
   </>
-);
+)
+};
 
 
   export default TopNavBar2;

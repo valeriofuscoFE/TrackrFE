@@ -5,7 +5,7 @@
    
 
 body { 
-    background-image: url('background.png');
+	height:100vh;
     background-repeat: no-repeat;
     background-size: 1500px 1500px;
     // font-family: Open Sans;
@@ -145,15 +145,7 @@ body {
 
 
 
-.modalColumn {
-    @include backgroundText($primaryBgColor,$primarytextBlack); 
-    margin-top: 10px;
-    padding:25px;
-    // text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-}
+
 
 .logoModalButton{
     box-shadow: $primaryBorderShadow;
@@ -173,7 +165,14 @@ body {
     text-align: center;
     border-radius:$primaryButtonRadius;
     border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
+	box-shadow: $primaryBorderShadow;
+}
+
+
+//BUTTONS
+
+.custom_button{
+	margin-bottom:2rem
 }
 
 .plusColumn{
