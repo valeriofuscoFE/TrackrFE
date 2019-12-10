@@ -1,7 +1,7 @@
-import{GET_SCHOOLS} from '../actions/type'
+import{GET_SCHOOLS} from '../actions/types'
 
 const initialState ={
-	schools:null,
+	schools:[],
 	loading:true
 }
 

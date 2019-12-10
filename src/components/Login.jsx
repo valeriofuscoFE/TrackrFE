@@ -4,11 +4,12 @@ import TopNavBar from './navbars/topNavBar'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {login} from '../actions/auth'
-const Login = ({login , isAuthenticated , user}) => {
-    const [formData,setFormData] = useState({
-        email:'',
-        password:''
-    })
+
+const Login = ({login , isAuthenticated, auth, user}) => {
+	const [formData,setFormData] = useState({
+		email:'',
+		password:''
+	})
 const {email,password} = formData;
 const onChange = e =>
 setFormData({...formData,[e.target.name]: e.target.value});
@@ -18,9 +19,18 @@ const onSubmit = async e => {
     login(email,password)
 }
 if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
-  }
-  console.log(user)
+  // return <Redirect to='/admin' />;
+  if (user.role =="Student") 
+  return <Redirect to='/dashboard'/>
+  if (user.role =="Manager") 
+  return <Redirect to='/manager'/>
+  if (user.role =="Admin") 
+  return <Redirect to='/admin'/>
+  
+} 
+// var role = user.user.role
+console.log(user, "user")
+
 return (
     <Fragment>
 <TopNavBar/>
@@ -76,7 +86,9 @@ Login.propTypes={
     isAuthenticated: PropTypes.bool,
 }
 const mapStateToProps = state => ({  
-    isAuthenticated:state.auth.isAuthenticated
+  isAuthenticated:state.auth.isAuthenticated,
+  user: state.auth.user
+
 });
 export default connect(
     mapStateToProps,

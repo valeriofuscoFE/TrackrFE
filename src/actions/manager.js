@@ -32,7 +32,7 @@ export const getRecentActivities =() => async dispatch =>{
     }
     
     export const getStudentName =() => async dispatch =>{
-	
+    
         try {
             if(localStorage.token){
                 setAuthToken(localStorage.token);
@@ -56,3 +56,22 @@ export const getRecentActivities =() => async dispatch =>{
             console.log(err)
         }   
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

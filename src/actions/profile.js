@@ -17,8 +17,7 @@ export const getCurrentProfile =() => async dispatch =>{
 			var res = await fetch("http://localhost:4000/user/5de11d74e8a8cd6a247c3079", {
 				method: "GET",
 				headers: {
-					"Authorization": "Bearer " + localStorage.token
-					// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVlNTQwYmZmMzU3NTJlMDA5YzJmOTciLCJpYXQiOjE1NzU5MDAyMTYsImV4cCI6MTU3NTkxMTAxNn0.rNhBrlvXFICwizub4tbQhOoc7Dt5lJ11i62gOPaVbcc"
+					"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU2NDM5YTU3NDFjMzFlMDAwNTVlMzUiLCJpYXQiOjE1NzU0ODI4NTcsImV4cCI6MTU3NTQ5MzY1N30.nu4hHfTjAi6l0ewICr16BQRPPUAtzprIdjiAzlGddOw"
 				},
 			})
 			if (res.ok) {
