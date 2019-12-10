@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Columns,Column} from 'react-bulma-components'
+import {Container} from 'react-bulma-components'
 
 
 
