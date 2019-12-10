@@ -1,30 +1,23 @@
 import React from 'react';
+import {Modal, Button} from "reactstrap";
 import {useEffect, useState} from 'react';
 import TopNavBarAdmin from '../components/navbars/topNavBarAdmin';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 import { getCurrentProfile } from '../actions/profile'
 import { getSchools } from '../actions/schools'
-import PropTypes from 'prop-types';
-import store from '../store'
-import {loadUser} from '../actions/auth'
+
 import {connect} from 'react-redux';
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  profile: state.profile
-})
+const mapStateToProps = state => state;
 
-const AdminDashboard = () => {
-// const [profile, setProfile] = useState(null)
+const mapDispatchToProps = dispatch => ({
+  getSchoolsThunk: () =>dispatch(getSchools()),
+});
 
-  useEffect(()=>{
-    console.log("useEffect is running")
-    store.dispatch(getCurrentProfile());
-    store.dispatch(loadUser());
-    // setProfile(profile)
-    // getSchools();
-  },[]);
+class AdminDashboard extends React.Component {
+
+render() { 
 
   return(
 <>
@@ -41,47 +34,43 @@ const AdminDashboard = () => {
 </div>
 {/* SECOND ROW */}
 <div class="columns  is-centered">
-  <div class="column plusColumn is-4">
+  <button class="column plusColumn is-4">
     Add School
-  </div>
+  </button>
+  
 </div>
-
-{/* THIRD ROW */}
+{/* <div className = "row"> */}
 <div class="columns  is-centered">
+{/* THIRD ROW */}
+{this.props.schools.schools && this.props.schools.schools.map((school) => {
+         return (
+           
+
   <div class="column bottomColumn" id="bottomColumn1">
-      <button class="logoButton" disabled><strong>S</strong></button>
-    School 1<hr></hr><small>Manager:</small>
+<button class="logoButton" disabled><strong>{school.name.substring(0, 1)}</strong></button>
+         {school.name}<hr></hr><small>Email: {school.email}</small><br></br><small>Address: {school.address}</small>
    
   </div>
-  <div class="column bottomColumn"id="bottomColumn2">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 2<hr></hr><small>Manager:</small>
+
+
+         )
+})}
   </div>
-  <div class="column bottomColumn"id="bottomColumn3">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 3<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn4">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 4<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn5">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 5<hr></hr><small>Manager:</small>
-  </div>
-</div>
+  
 
 </Container>
+
 </>
   )
 }
-AdminDashboard.propTypes={
-  getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
-}     
+
+componentDidMount=async()=>{
+  await this.props.getSchoolsThunk();
+
+ }
+}
+   
 
 
 
-
-  export default connect(mapStateToProps,{getCurrentProfile})(AdminDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

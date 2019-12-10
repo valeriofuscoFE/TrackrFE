@@ -2,6 +2,10 @@ import React from 'react';
 import {Container, Columns,Column} from 'react-bulma-components';
 import profilepicture from '../../assets/profilepicture.jpg'
 
+const logOut = () => {
+  localStorage.removeItem("token")
+  window.location.href = '/login'
+}
 
 
 const TopNavBarAdmin = () => (
@@ -46,7 +50,7 @@ const TopNavBarAdmin = () => (
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button" id="buttonWhite">LOG OUT</a>
+                <a class="button" id="buttonWhite"onClick={()=> logOut()}>LOG OUT</a>
               </div>
             </div>
           </div>
