@@ -57,17 +57,12 @@ const listOfKPI = applications.map(kpi=>(
 ))
 
 
+
   return (
   <>
     <TopNavBarManager/>
 
     <Container>
-      {/* SEARCH BAR */}
-      <div class="columns">
-        <div class="column is-3 is-offset-9">
-          <input class="input" type="text" placeholder="SEARCH STUDENT KPI" />
-        </div>
-      </div>
       {/* FIRST ROW */}
       <div class="columns  is-centered">
         <div class="column plusColumn is-4">STUDENTS KPI</div>
