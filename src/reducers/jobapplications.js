@@ -10,7 +10,6 @@ export default function(state = initialState, action ){
  
  switch(type){
 	 case GET_JA:
-		console.log('########',payload)
 		 return{
 			 ...state,
 			 jobapplications: [...payload],

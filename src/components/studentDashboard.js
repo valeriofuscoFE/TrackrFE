@@ -24,6 +24,11 @@ const StudentDashboard = () => {
         isShowing={isShowing}
         hide={toggle}
       />
+
+
+
+
+	  <SideMenu/>
     </div>
 		
 		</>

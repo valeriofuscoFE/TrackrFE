@@ -28,6 +28,8 @@
   
   .modal {
 	z-index: 100;
+	display:block !important;
+	height:auto;
 	background: white;
 	position: relative;
 	margin: 1.75rem auto;
@@ -36,7 +38,7 @@
 	padding: 2rem;
   }
   
-  .modal-header {
+  .modal-header1 {
 	display: flex;
 	justify-content: flex-end;
   }
@@ -63,4 +65,16 @@
   .button-default {
 	background: #247BA0;
 	color: #fff;
+  }
+
+
+  .modalH1{
+	  margin-bottom:1rem;
+	  margin-top:1rem;
+  }
+
+
+  .bModal{
+	margin-top:3rem;
+	margin-right:2rem;
   }

@@ -11,7 +11,7 @@ const SideMenu = () => {
 	}, [])
 	
 	const jobApplicationsArray = useSelector((state) => state.jobapplications);
-	console.log(jobApplicationsArray.jobapplications[0])
+	
 	return (
 		<aside className="menu">
 			<p className="menu-label">YOUR JOB APPLICATIONS</p>

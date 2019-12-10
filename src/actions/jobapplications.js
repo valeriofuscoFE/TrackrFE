@@ -8,9 +8,8 @@ import {
 
   export const getJobApplications = () => async dispatch => {
 	try {
-	  const res = await axios.get('http://localhost:4000/application?studentId=5de63815f242030f60e0e5b2');
-	  console.log(res.data)
-  
+	  const res = await axios.get('http://localhost:4000/application?studentId=5de970035d4ba7d3d8fd620c');
+	  
 	  dispatch({
 		type: GET_JA,
 		payload: res.data
