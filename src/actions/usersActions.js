@@ -11,9 +11,11 @@ export const fetchUsers = () => async dispatch =>{
 
 			var res = await fetch("http://localhost:4000/user/", {
 				method: "GET",
-				// headers: {
-				// 	"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGUxMWQ3NGU4YThjZDZhMjQ3YzMwNzkiLCJpYXQiOjE1NzUyNzU3NTAsImV4cCI6MTU3NTI4NjU1MH0.mX1Quoidqr_kNQ3Aw3CbZyaMwYW2pTRuiD7gfuy_hz8"
-				// },
+				headers: {
+					"Authorization": "Bearer " +    
+					//  localStorage.token
+					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVmNzUxMjRlZTY3ZDE4YjhmMDBhMzIiLCJpYXQiOjE1NzU5NzQxODcsImV4cCI6MTU3Njk3NDk4N30.tpJSFIwV-y9-q2iLibvdFUP7FxKUYJ_emd0ybpo_waM"
+				},
 			})
 			if (res.ok) {
 				var users = await res.json();

@@ -40,7 +40,7 @@ const TopNavBarManager = () => (
           <div class="navbar-start">
             <a class="navbar-item">HOME</a>
             <a class="navbar-item" href="/studentslist">STUDENTS LIST</a>
-            <a class="navbar-item">STUDENTS KPI</a>
+            <a class="navbar-item" href="/studentskpi">STUDENTS KPI</a>
           </div>
 
           <div class="navbar-end">

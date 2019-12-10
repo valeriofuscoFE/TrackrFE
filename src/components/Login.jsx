@@ -4,28 +4,25 @@ import TopNavBar from './navbars/topNavBar'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {login} from '../actions/auth'
-
-const Login = ({login , isAuthenticated,auth,user}) => {
-	const [formData,setFormData] = useState({
-		email:'',
-		password:''
-	})
+const Login = ({login , isAuthenticated , user}) => {
+    const [formData,setFormData] = useState({
+        email:'',
+        password:''
+    })
 const {email,password} = formData;
-
 const onChange = e =>
 setFormData({...formData,[e.target.name]: e.target.value});
-
 const onSubmit = async e => {
-	e.preventDefault();
-  login(email,password) 
+    e.preventDefault();
+    console.log(formData)
+    login(email,password)
 }
-console.log(auth,user,"ahhh")
 if (isAuthenticated) {
-  return <Redirect to='/manager' />;
-}
-
+    return <Redirect to='/dashboard' />;
+  }
+  console.log(user)
 return (
-	<Fragment>
+    <Fragment>
 <TopNavBar/>
 <form classNameName="form"  onSubmit={e => onSubmit(e)}> 
 <div className="columns">
@@ -33,10 +30,8 @@ return (
   <div className="column"></div>
   <div className="column is-one-third registerColumn">
   <div className="field">
-  <label className="label">LOGIN</label>
+  <label className="label">REGISTER</label>
 </div>
-
-
 <div className="field">
   <label className="label"><small>EMAIL</small></label>
   <div className="control has-icons-left has-icons-right">
@@ -49,7 +44,6 @@ return (
     </span>
   </div>
 </div>
-
 <div className="field">
   <label className="label"><small>PASSWORD</small></label>
   <div className="control has-icons-left has-icons-right">
@@ -62,9 +56,6 @@ return (
     </span>
   </div>
 </div>
-
-
-
 <div className="field is-grouped">
   <div className="control">
     <button className="button" id="buttonWhite">Submit</button>
@@ -77,27 +68,17 @@ return (
   <div className="column"></div>
 </div>
 </form>
-
 </Fragment>
-
 )
-
 }
-
-
 Login.propTypes={
-	login: PropTypes.func.isRequired, //SAME ON REGISTER COMPONENT
-	isAuthenticated: PropTypes.bool,
+    login: PropTypes.func.isRequired, //SAME ON REGISTER COMPONENT
+    isAuthenticated: PropTypes.bool,
 }
-
-
 const mapStateToProps = state => ({  
-  isAuthenticated:state.auth.isAuthenticated,
-  auth:state.auth
-  
+    isAuthenticated:state.auth.isAuthenticated
 });
-
 export default connect(
-	mapStateToProps,
-	{login}
-	) (Login);
+    mapStateToProps,
+    {login}
+    ) (Login);

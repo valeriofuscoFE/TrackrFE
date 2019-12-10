@@ -10,7 +10,11 @@ export const getRecentActivities =() => async dispatch =>{
         		var res = await fetch("http://localhost:4000/application", {
 				method: "GET",
 				headers: {
-					"Authorization": "Bearer " + localStorage.token
+                    "Authorization": "Bearer " 
+                    + 
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVmNzUxMjRlZTY3ZDE4YjhmMDBhMzIiLCJpYXQiOjE1NzU5NzQxODcsImV4cCI6MTU3Njk3NDk4N30.tpJSFIwV-y9-q2iLibvdFUP7FxKUYJ_emd0ybpo_waM"
+                    // localStorage.token
+                    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVlNTQwYmZmMzU3NTJlMDA5YzJmOTciLCJpYXQiOjE1NzU5MDAyMTYsImV4cCI6MTU3NTkxMTAxNn0.rNhBrlvXFICwizub4tbQhOoc7Dt5lJ11i62gOPaVbcc"
 				},
 			})
 			if (res.ok) {

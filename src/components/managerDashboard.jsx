@@ -35,6 +35,7 @@ class ManagerDashboard  extends React.Component {
        {
          var student=[]
            student = arr.find(a => a._id === id);
+           console.log("student", student)
                   return student !== undefined && student.name !== undefined
                     ? student.name 
                     : "";

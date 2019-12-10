@@ -1,14 +1,65 @@
-import React from 'react';
-import TopNavBarAdmin from './navbars/topNavBarAdmin';
+import React , {useState, useEffect, Component} from 'react';
+import {fetchUsers} from '../actions/usersActions';
+import {getRecentActivities} from '../actions/manager';
+import {connect} from 'react-redux';
+import TopNavBarManager from './navbars/topNavBarManager';
 import Profilepicture from '../assets/profilepicture.jpg'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
 
 
-const StudentsKPI = () => (
+const StudentsKPI = ({fetchUsers, usersReducer,getRecentActivities, applications}) => {
+
+  useEffect(()=>{
+ 
+    fetchUsers();
+    getRecentActivities();
+  },[])
+
+
+// const getStudentItems =(id)=>{
+//        var student = usersReducer.find(a => a._id === id);
+//        console.log("student info", student)
+//               return (student && [student.name, student.surname ,student.school]
+//       )}
+const getStudentName =(id)=>{
+     
+  var student = usersReducer.find(a => a._id === id);
+         return (student && student.name
+         )}
+
+const getStudentSurname =(id)=>{
+     
+  var student = usersReducer.find(a => a._id === id);
+         return (student && student.surname
+         )}
+
+const getStudentSchool =(id)=>{
+     
+  var student = usersReducer.find(a => a._id === id);
+         return (student && student.school
+         )}
+
+
+const listOfKPI = applications.map(kpi=>(
+
+  <div>
+   <div  key={kpi._id} class="columns is-gapless is-centered" >
+   <div  class="column is-2 topColumn">{getStudentName(kpi.studentId)}</div>
+   <div  class="column is-2 topColumn">{getStudentSurname(kpi.studentId)}</div>
+   <div  class="column is-2 topColumn">{getStudentSchool(kpi.studentId)}</div>
+   <div  class="column is-2 topColumn">{kpi.companyName}</div>
+   <div  class="column is-2 topColumn">{kpi.status}</div>
+ </div>
+ <hr></hr>
+ </div>
+))
+
+
+  return (
   <>
-    <TopNavBarAdmin />
+    <TopNavBarManager/>
 
     <Container>
       {/* SEARCH BAR */}
@@ -25,11 +76,6 @@ const StudentsKPI = () => (
             EXPORT
           </button>
         </div>
-        <div class="column is-1">
-          <button class=" button is-pulled-left" id="buttonBlack">
-            ADD STUDENT
-          </button>
-        </div>
       </div>
       <hr></hr>
 
@@ -42,25 +88,22 @@ const StudentsKPI = () => (
         <div class="column topColumn">Status</div>
       </div>
       <hr></hr>
-      {/* FIRST COLUMNS OF STUDENT KPI */}
+      {/* COLUMNS OF STUDENT KPI */}
       <div class="columns is-gapless  is-centered">
-        <div class="column topColumn"> <img
-                              src={Profilepicture}
-                              class="profilepicture"
-                              alt="profilepicture"
-                              width="40px"
-                            /></div>
-        <div class="column topColumn">Krzysztof Nadlonek</div>
-        <div class="column topColumn">June 2019</div>
-        <div class="column topColumn">Application sent to Uber </div>
-        <div class="column topColumn">Accepted</div>
+        <div class="column ">{listOfKPI}</div>
       </div>
-      <hr></hr>
-
-
+   
     </Container>
   </>
-);
+)};
+
+const mapStateToProps = state => ({
+  usersReducer: state.usersReducer.users,
+  applications: state.applications.applications
+});
 
 
-  export default StudentsKPI;
+export default connect(
+	mapStateToProps ,
+	{fetchUsers,getRecentActivities}
+	) (StudentsKPI);

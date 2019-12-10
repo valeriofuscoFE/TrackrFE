@@ -43,7 +43,6 @@ const studentsList = usersReducer.map(student=>(
  </div>
  <hr></hr>
  </div>
- 
 ))
 
 
@@ -100,6 +99,11 @@ console.log("searchResult",searchResult)
               EXPORT
             </button>
           </div>
+          <div class="column is-1">
+          <button class=" button is-pulled-left" id="buttonBlack">
+            ADD STUDENT
+          </button>
+        </div>
         </div>
    
         {/* SECOND ROW */}
