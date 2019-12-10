@@ -246,3 +246,13 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}

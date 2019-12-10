@@ -1,6 +1,7 @@
 import{
     GET_RECENTACTIVITIES,
-    GET_STUD_NAME
+    GET_STUD_NAME,
+    GET_TOTALAPPLICATIONS
 } from './types'
 export const getRecentActivities =() => async dispatch =>{
     
@@ -48,7 +49,29 @@ export const getRecentActivities =() => async dispatch =>{
         }
 
 
-
+        export const getTotalApplications =() => async dispatch =>{
+	
+            try {
+                        var res = await fetch("http://localhost:4000/application/totApp", {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.token
+                        },
+                    })
+                    if (res.ok) {
+                        var appCount = await res.json();
+                        appCount = appCount.totApp		
+                dispatch({
+                    type: GET_TOTALAPPLICATIONS,
+                    payload: appCount
+                })
+            }
+            // }
+            } catch (err) {
+                console.log(err)
+            }
+                
+            }
 
 
 

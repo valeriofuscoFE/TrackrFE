@@ -5,15 +5,15 @@ import diagrampicture2 from '../styles/diagrampicture2.png'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import React from 'react';
 import TopNavBarManager from './navbars/topNavBarManager';
-import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Container} from 'react-bulma-components'
 import { Alert } from 'react-bootstrap';
-import { getRecentActivities,getStudentName } from '../actions/manager'
+import { getRecentActivities,getStudentName, getTotalApplications } from '../actions/manager'
 const mapStateToProps = state =>state
 
 const mapDispatchToProps = dispatch => ({
   getActicitiesThunk :()=>dispatch(getRecentActivities()),
-  getStudNameThunk:(id)=>dispatch(getStudentName(id))
+  getStudNameThunk:(id)=>dispatch(getStudentName(id)),
+  getTotalApplicationsThunk :()=>dispatch(getTotalApplications()),
 });
 
 class ManagerDashboard  extends React.Component {
@@ -25,12 +25,13 @@ class ManagerDashboard  extends React.Component {
    componentDidMount=async()=>{
     await this.props.getActicitiesThunk();
     await this.props.getStudNameThunk();      
+    await this.props.getTotalApplicationsThunk();
     this.getTotalApplsInAWeek();
     this.getTotalStudents()
    }
 
     getName=(id)=>{
-      var arr = this.props.students.students        
+      var arr = this.props.manager.students        
        if(arr !==undefined)
        {
          var student=[]
@@ -41,14 +42,14 @@ class ManagerDashboard  extends React.Component {
       } 
      }
 
-     getTotalApplictaions=()=>{
-       var arrApps=this.props.applications.applications       
-       return arrApps.length
-     }
+    //  getTotalApplictaions=()=>{
+    //    var arrApps=this.props.applications.applications       
+    //    return arrApps.length
+    //  }
 
 
      getTotalStudents=()=>{
-      var arrStudents=this.props.students.students
+      var arrStudents=this.props.manager.students
       
       this.setState({
         students:arrStudents
@@ -65,7 +66,7 @@ class ManagerDashboard  extends React.Component {
         week.push(day)
       }
       var finalArr=[]
-      var arrApps=this.props.applications.applications
+      var arrApps=this.props.manager.applications
 
       var Newapplications = arrApps.filter(function(application) {
         return application.status =="applied";
@@ -98,7 +99,7 @@ class ManagerDashboard  extends React.Component {
       <div className="column is-12">
           <button className=" button is-pulled-left" id="buttonBlack">EXPORT</button>
           TOTAL APPLICATIONS :
-         <b> {this.getTotalApplictaions()}</b>
+         <b> {this.props.manager.appCount}</b>
           <br></br>
          TOTAL APPLICATIONS THIS WEEK :
     <b>{this.state.week}</b>
@@ -131,7 +132,7 @@ class ManagerDashboard  extends React.Component {
 ​
   {/* RECENT ACTIVITIES */}
   <div className="column topColumn is-3">RECENT ACTIVITIES
-  { this.props.applications.applications && this.props.applications.applications.map((app) => (
+  { this.props.manager.applications && this.props.manager.applications.map((app) => (
       <div className="alert alert-primary" role="alert">
      <b>{this.getName(app.studentId)}</b>  {app.status}  <b>- {app.companyName}</b>
      </div>
