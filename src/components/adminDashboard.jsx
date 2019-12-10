@@ -1,4 +1,5 @@
 import React from 'react';
+import {Modal, Button} from "reactstrap";
 import {useEffect, useState} from 'react';
 import TopNavBarAdmin from '../components/navbars/topNavBarAdmin';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
@@ -15,7 +16,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class AdminDashboard extends React.Component {
-
 
 render() { 
 
@@ -34,43 +34,29 @@ render() {
 </div>
 {/* SECOND ROW */}
 <div class="columns  is-centered">
-  <div class="column plusColumn is-4">
+  <button class="column plusColumn is-4">
     Add School
-  </div>
+  </button>
+  
 </div>
-<div className = "row">
+{/* <div className = "row"> */}
+<div class="columns  is-centered">
 {/* THIRD ROW */}
 {this.props.schools.schools && this.props.schools.schools.map((school) => {
          return (
            
-<div class="columns  is-centered">
+
   <div class="column bottomColumn" id="bottomColumn1">
-      <button class="logoButton" disabled><strong>S</strong></button>
-    {school.name}<hr></hr><small>Manager:</small>
+<button class="logoButton" disabled><strong>{school.name.substring(0, 1)}</strong></button>
+         {school.name}<hr></hr><small>Email: {school.email}</small><br></br><small>Address: {school.address}</small>
    
   </div>
-  </div>
+
 
          )
 })}
   </div>
-  {/* <div class="column bottomColumn"id="bottomColumn2">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 2<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn3">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 3<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn4">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 4<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn5">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 5<hr></hr><small>Manager:</small>
-  </div> */}
-
+  
 
 </Container>
 
