@@ -10,7 +10,6 @@ import manager from './manager'
 export default combineReducers({
 	auth,	
 	profile,
-	usersReducer,	
 	manager,
 	schools
 })
