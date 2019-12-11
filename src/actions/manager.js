@@ -1,6 +1,7 @@
 import{
     GET_RECENTACTIVITIES,
-    GET_STUD_NAME
+    GET_STUD_NAME,
+    GET_TOTALAPPLICATIONS
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
 
@@ -12,8 +13,8 @@ export const getRecentActivities =() => async dispatch =>{
 				headers: {
                     "Authorization": "Bearer " 
                     + 
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVmNzUxMjRlZTY3ZDE4YjhmMDBhMzIiLCJpYXQiOjE1NzU5NzQxODcsImV4cCI6MTU3Njk3NDk4N30.tpJSFIwV-y9-q2iLibvdFUP7FxKUYJ_emd0ybpo_waM"
-                    // localStorage.token
+                    //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVmNzUxMjRlZTY3ZDE4YjhmMDBhMzIiLCJpYXQiOjE1NzU5NzQxODcsImV4cCI6MTU3Njk3NDk4N30.tpJSFIwV-y9-q2iLibvdFUP7FxKUYJ_emd0ybpo_waM"
+                     localStorage.token
                     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVlNTQwYmZmMzU3NTJlMDA5YzJmOTciLCJpYXQiOjE1NzU5MDAyMTYsImV4cCI6MTU3NTkxMTAxNn0.rNhBrlvXFICwizub4tbQhOoc7Dt5lJ11i62gOPaVbcc"
 				},
 			})
@@ -58,7 +59,29 @@ export const getRecentActivities =() => async dispatch =>{
         }
 
 
-
+        export const getTotalApplications =() => async dispatch =>{
+	
+            try {
+                        var res = await fetch("http://localhost:4000/application/totApp", {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.token
+                        },
+                    })
+                    if (res.ok) {
+                        var appCount = await res.json();
+                        appCount = appCount.totApp		
+                dispatch({
+                    type: GET_TOTALAPPLICATIONS,
+                    payload: appCount
+                })
+            }
+            // }
+            } catch (err) {
+                console.log(err)
+            }
+                
+            }
 
 
 
