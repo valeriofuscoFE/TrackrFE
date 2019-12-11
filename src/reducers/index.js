@@ -8,7 +8,6 @@ import manager from './manager'
 export default combineReducers({
 	auth,
 	profile,
-	
 	manager,
 	schools
 })

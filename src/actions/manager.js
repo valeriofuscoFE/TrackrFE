@@ -1,8 +1,10 @@
 import{
     GET_RECENTACTIVITIES,
     GET_STUD_NAME,
-    GET_TOTALAPPLICATIONS
+    GET_TOTALAPPLICATIONS,
+    GET_WEEKAPPLICATIONS
 } from './types'
+
 export const getRecentActivities =() => async dispatch =>{
     
     try {
@@ -73,7 +75,30 @@ export const getRecentActivities =() => async dispatch =>{
                 
             }
 
-
+            export const getTotalAppsInAWeek =() => async dispatch =>{
+	
+                try {
+                            var res = await fetch("http://localhost:4000/application/AppsWeek", {
+                            method: "GET",
+                            headers: {
+                                "Authorization": "Bearer " + localStorage.token
+                            },
+                        })
+                        if (res.ok) {
+                            var weekApps = await res.json();
+                            weekApps = weekApps.lastWeek		
+                    dispatch({
+                        type: GET_WEEKAPPLICATIONS,
+                        payload: weekApps
+                    })
+                }
+                // }
+                } catch (err) {
+                    console.log(err)
+                }
+                    
+                }
+    
 
 
 
