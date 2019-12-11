@@ -185,7 +185,7 @@ body {
     padding-top: 5px;
     padding-bottom: 0px;
     border-radius:$primaryButtonRadius;
-    border:$thirdCardBorderColor; 
+    //border:$thirdCardBorderColor; 
     box-shadow: $primaryBorderShadow;
 }    
 .bottomColumn{
@@ -198,10 +198,10 @@ body {
 }
 
 .logoButton{
-    box-shadow: $primaryBorderShadow;
+   // box-shadow: $primaryBorderShadow;
     border-radius:$primaryButtonRadius;
-    border:$primaryCardBorderColor;
-    background-color: transparent;
+   //  border:$primaryCardBorderColor;
+     background-color: transparent;
     margin-right:5px;
 
 }
@@ -215,7 +215,7 @@ body {
 }
 
 #bottomColumn1{
-    @include cardBackground($greenBg);
+    @include cardBackground($primaryBtnWhite);
 }       
 
 #bottomColumn2{

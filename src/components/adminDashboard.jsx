@@ -1,145 +1,159 @@
 import React from 'react';
-import {Modal, Button} from "reactstrap";
-import {useEffect, useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
 import TopNavBarAdmin from '../components/navbars/topNavBarAdmin';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Box,Container, Columns,Column} from 'react-bulma-components'
-import { getCurrentProfile } from '../actions/profile'
-import { getSchools } from '../actions/schools'
-import {connect} from 'react-redux';
+import { Box, Container, Columns, Column } from 'react-bulma-components'
+import { getSchools, addSchool, deleteSchool, updateSchool, getSchoolbyId } from '../actions/schools'
+
+import { connect } from 'react-redux';
 
 const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  getSchoolsThunk: () =>dispatch(getSchools()),
+  getSchoolsThunk: () => dispatch(getSchools()),
+  addSchoolThunk: state => dispatch(addSchool(state)),
+  deleteSchoolThunk: id => dispatch(deleteSchool(id)),
+  updateSchoolThunk: (state, id) => dispatch(updateSchool(state, id)),
+  getSchoolByIdThunk: (id) => dispatch(getSchoolbyId(id))
 });
 
 class AdminDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        defaultModal: false
+      showModal: false,
+      school: {
+        name: '',
+        email: '',
+        address: ''
+      }
     };
-}
-toggleModal = state => {
-    this.setState({
-        [state]: !this.state[state]
-    });
-};
+  }
 
-render() { 
+  handleInput = async input => {
+    var newSchool = this.state.school; //we are taking one object here        
+    var currentId = input.currentTarget.id; //this is when we type smthng in textbox or any input        
+    if (currentId === "name") {
+      newSchool[currentId] = (input.currentTarget.value);
+    }
+    else if (currentId === "email") {
+      newSchool[currentId] = input.currentTarget.value;
+    }
+    else {
+      newSchool[currentId] = input.currentTarget.value;
+    }
+    this.setState({ school: newSchool });
+  }
 
-  return(
-<>
-<TopNavBarAdmin/>
+  fetchSchoolForUpdate = async e => {
+    var schoolId = e.currentTarget.value;
+    await this.props.getSchoolByIdThunk(schoolId);
+    this.setState({ showModal: true })
+  }
 
-<Container>
 
-{/* FIRST ROW */}
- <div class="columns  is-centered">
+  componentDidMount = async () => {
+    await this.props.getSchoolsThunk();
+  }
 
-  <div class="column topColumn">
-    School List
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
+
+  updateSchool = async e => {
+    var schoolId = e.currentTarget.value;
+    await this.props.updateSchoolThunk(this.state.school, schoolId)
+    await this.props.getSchoolsThunk()
+  }
+
+  deleteSchool = async e => {
+    var schoolId = e.currentTarget.value;
+    await this.props.deleteSchoolThunk(schoolId)
+    await this.props.getSchoolsThunk()
+  }
+
+  render() {
+    return (
+      <>
+        <TopNavBarAdmin />
+        <Container>
+
+          <div className="columns  is-centered">
+            <div className="column topColumn">
+              School List
   </div>
-</div>
-{/* SECOND ROW */}
-<div class="columns  is-centered">
-<Button  block className="mb-3" type="button" onClick={() => this.toggleModal("defaultModal")}>
-    Add School
+          </div>
+          <div className="columns  is-centered"  >
+            <Button className="column plusColumn is-4 mt-4" onClick={() => this.setState({ showModal: true })}  >
+              Add School
   </Button>
-  <Modal
-                                            className="modal-dialog-centered"
-                                            isOpen={this.state.defaultModal}
-                                            toggle={() => this.toggleModal("defaultModal")}
-                                        >
-                                            <div className="modal-header">
-                                                <h6 className="modal-title" id="modal-title-default">
-                                                
-                                                </h6>
-                                                <Button
-                                                    aria-label="Close"
-                                                    className="close"
-                                                    data-dismiss="modal"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("defaultModal")}
-                                                >
-                                                    <span aria-hidden={true}>×</span>
-                                                </Button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <p>
-                                                    Email:
-                                                </p>
-                                                <p>
-                                                    Date of birth: 
-                                                </p>
-                                                <p>
-                                                    Projects:
-                                                   
-                                                </p>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <Button color="primary" type="button">
-                                                    Edit Student
-                                                   </Button>
-                                                <Button
-                                                    className="ml-auto"
-                                                    color="link"
-                                                    data-dismiss="modal"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("defaultModal")}
-                                                >
-                                                    Close
-                                                   </Button>
-                                            </div>
-                                        </Modal>
-</div>
-{/* <div className = "row"> */}
-<div class="columns  is-centered">
-{/* THIRD ROW */}
-{this.props.schools.schools && this.props.schools.schools.map((school) => {
-         return (
-           
-
-  <div class="column bottomColumn" id="bottomColumn1">
-<button class="logoButton" disabled><strong>{school.name.substring(0, 1)}</strong></button>
-         {school.name}<hr></hr><small>Email: {school.email}</small><br></br><small>Address: {school.address}</small>
-   
-  </div>
-
-         )
-})}
-  </div>
- 
-  {/* <div class="column bottomColumn"id="bottomColumn2">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 2<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn3">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 3<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn4">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 4<hr></hr><small>Manager:</small>
-  </div>
-  <div class="column bottomColumn"id="bottomColumn5">
-  <button class="logoButton" disabled><strong>S</strong></button>
-  School 5<hr></hr><small>Manager:</small>
-</div>*/}
-​
-​
-</Container>
-​
-</>
-  )
+          </div>
+          <div className="row">
+            {this.props.schools.schools.length >= 0 && this.props.schools.schools.map((school, y) => (
+              <div className="col-md-3" key={y}>
+                <div className="column bottomColumn" id="bottomColumn1">
+                  <button className="logoButton" value={school._id} onClick={this.fetchSchoolForUpdate} >
+                    <strong>{school.name.substring(0, 1)}</strong></button>
+                  <b>{school.name}</b><button style={{ float: "right" }} value={school._id} onClick={this.deleteSchool} >x</button><hr></hr>
+                  <small>{school.address}</small><br></br>
+                  <small>{school.email}</small>
+                </div>
+              </div>
+            ))
+            }
+          </div>
+          <div>
+          </div>
+        </Container>
+        <Modal show={this.state.showModal} onHide={this.toggleModal}>
+          <Modal.Header style={{ backgroundColor: "#2867B2" }} closeButton>
+            <Modal.Title></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="school name"
+                aria-label="schoolName"
+                onChange={this.handleInput}
+                id="name"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Email"
+                aria-label="email"
+                onChange={this.handleInput}
+                id="email"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Address"
+                as="textarea" style={{ height: "100px" }}
+                aria-label="address"
+                onChange={this.handleInput}
+                id="address"
+              />
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => this.toggleModal()}>
+              Close
+                     </Button>
+            <Button variant="primary" style={{ backgroundColor: "#2867B2" }}
+              onClick={() => { this.toggleModal(); this.props.addSchoolThunk(this.state.school); this.props.getSchoolsThunk() }}>
+              Add
+                   </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    )
+  }
 }
 
-componentDidMount=async()=>{
-  await this.props.getSchoolsThunk();
-
- }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);
 
