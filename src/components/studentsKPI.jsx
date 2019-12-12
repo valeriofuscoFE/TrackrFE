@@ -94,7 +94,7 @@ const listOfKPI = applications.map(kpi=>(
 
 const mapStateToProps = state => ({
   usersReducer: state.usersReducer.users,
-  applications: state.applications.applications
+  applications: state.manager.applications
 });
 
 
