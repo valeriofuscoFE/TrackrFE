@@ -6,17 +6,14 @@ import{
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
 
-export const getRecentActivities =() => async dispatch =>{
-	
+export const getRecentActivities =() => async dispatch =>{	
 	try {
         		var res = await fetch("http://localhost:4000/application", {
 				method: "GET",
 				headers: {
                     "Authorization": "Bearer " 
                     + 
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGYxMDMyMThkN2IxNTNmNDhlN2Y2ZmIiLCJpYXQiOjE1NzYwNzYwNzksImV4cCI6MTU3NzA3Njg3OX0.Ia456IrjdznKM-ksWCuWChT2lk2irik66zTWZ4oPsQw"
-                    // localStorage.token
-                    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVlNTQwYmZmMzU3NTJlMDA5YzJmOTciLCJpYXQiOjE1NzU5MDAyMTYsImV4cCI6MTU3NTkxMTAxNn0.rNhBrlvXFICwizub4tbQhOoc7Dt5lJ11i62gOPaVbcc"
+                     localStorage.token
 				},
 			})
 			if (res.ok) {
@@ -77,11 +74,9 @@ export const getRecentActivities =() => async dispatch =>{
                     payload: appCount
                 })
             }
-            // }
             } catch (err) {
                 console.log(err)
-            }
-                
+            }   
             }
 
             export const getTotalAppsInAWeek =() => async dispatch =>{
@@ -101,11 +96,9 @@ export const getRecentActivities =() => async dispatch =>{
                         payload: weekApps
                     })
                 }
-                // }
                 } catch (err) {
                     console.log(err)
-                }
-                    
+                }                    
                 }
     
 
