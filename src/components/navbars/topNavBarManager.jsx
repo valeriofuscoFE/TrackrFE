@@ -1,6 +1,8 @@
   
 import React from 'react';
 import {Container, Columns,Column} from 'react-bulma-components';
+import Profilepicture from '../../assets/profilepicture.jpg'
+
 
 const logOut = () => {
   localStorage.removeItem("token")
@@ -21,8 +23,10 @@ const TopNavBarManager = () => (
           </a>
           <a class="navbar-item" href="/home">
             <img
+              src={Profilepicture}
               class="profilepicture"
               alt="profilepicture"
+              width="50px"
             />
           </a>
 
@@ -42,19 +46,27 @@ const TopNavBarManager = () => (
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item">HOME</a>
-            <a class="navbar-item" href="/studentslist">STUDENTS LIST</a>
-            <a class="navbar-item" href="/studentskpi">STUDENTS KPI</a>
+            <a class="navbar-item" href="/studentslist">
+              STUDENTS LIST
+            </a>
+            <a class="navbar-item" href="/studentskpi">
+              STUDENTS KPI
+            </a>
           </div>
 
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button" id="buttonWhite">MY INFO</a>
+                <a class="button" id="buttonWhite">
+                  MY INFO
+                </a>
               </div>
             </div>
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button" id="buttonWhite" onClick={()=> logOut()}>LOG OUT</a>
+                <a class="button" id="buttonWhite" onClick={() => logOut()}>
+                  LOG OUT
+                </a>
               </div>
             </div>
           </div>

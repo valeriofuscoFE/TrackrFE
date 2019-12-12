@@ -17,8 +17,9 @@ export default function(state = initialState, action ){
 			 users:payload,
 			//  loading:false
 		 }
+	
 		default:
-			return state;
+			return state;	
 
  }
 }

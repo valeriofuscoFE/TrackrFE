@@ -1,10 +1,13 @@
 import React , {useState, useEffect, Component} from 'react';
 import TopNavBarManager from './navbars/topNavBarManager';
+import Profilepicture from '../assets/profilepicture.jpg'
+import AddStudent from './modals/addStudent';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box,Container, Columns,Column} from 'react-bulma-components';
 import {fetchUsers} from '../actions/usersActions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, Modal, ButtonToolbar} from 'react-bootstrap';
 
 
 const StudentsList = ({fetchUsers, usersReducer}) => {
@@ -32,9 +35,9 @@ const studentsList = usersReducer.map(student=>(
 
   <div>
    <div  key={student._id} class="columns is-gapless is-centered" >
+   <div  class="column is-2 topColumn">{student.image}</div>
    <div  class="column is-2 topColumn">{student.name}</div>
    <div  class="column is-2 topColumn">{student.surname}</div>
-   <div  class="column is-3 topColumn">{student.email}</div>
    <div  class="column is-3 topColumn">{student.githubUrl}</div>
    <div  class="column is-2 topColumn">{student.school}</div>
    <button class="button" id="buttonDelete" onClick={()=> deleteUserHandler(student._id)}>
@@ -64,20 +67,20 @@ useEffect(() => {
 }, [searchStudent]);
 
 console.log("searchResult",searchResult)
-
-
-
-
   // const searchResult = !searchStudent
   // ? usersReducer
   // : usersReducer.filter(student =>
   //     student.toString().toLowerCase().includes(searchStudent.toLowerCase())
   //   );
+  // const [modalShow, setModalShow] = useState(false);
+
+
+
+  
 
   return (
     <>
       <TopNavBarManager />
-
       <Container>
         {/* SEARCH BAR */}
         <div class="columns">
@@ -99,13 +102,17 @@ console.log("searchResult",searchResult)
               EXPORT
             </button>
           </div>
-          <div class="column is-1">
-          <button class=" button is-pulled-left" id="buttonBlack">
-            ADD STUDENT
-          </button>
+          {/* <div class="column is-1">
+            <ButtonToolbar>
+              <Button variant="primary" onClick={() => setModalShow(true)} id="buttonBlack">
+                + 
+              </Button>
+
+              <AddStudent show={modalShow} onHide={() => setModalShow(false)} />
+            </ButtonToolbar>
+          </div> */}
         </div>
-        </div>
-   
+
         {/* SECOND ROW */}
         <div class="columns is-gapless is-centered">
           <div class="column topColumn">Name</div>
@@ -116,26 +123,30 @@ console.log("searchResult",searchResult)
         </div>
         <hr></hr>
 
-             {/* SEARCH MAPPING*/}
+        {/* SEARCH MAPPING*/}
 
-             <div>
+        <div>
           {searchResult.map(search => (
-              <div>
-              <div  key={search._id} class="columns is-gapless is-centered" >
-              <div  class="column is-2 filteredColumn">{search.name}</div>
-              <div  class="column is-2 filteredColumn">{search.surname}</div>
-              <div  class="column is-3 filteredColumn">{search.email}</div>
-              <div  class="column is-3 filteredColumn">{search.githubUrl}</div>
-              <div  class="column is-2 filteredColumn">{search.school}</div>
-              <button class="button" id="buttonDelete" onClick={()=>deleteUserHandler(search._id)}>
-                   X
-              </button>
-            </div>
-            <hr></hr>
+            <div>
+              <div key={search._id} class="columns is-gapless is-centered">
+                <div class="column is-2 filteredColumn">{search.name}</div>
+                <div class="column is-2 filteredColumn">{search.surname}</div>
+                <div class="column is-3 filteredColumn">{search.email}</div>
+                <div class="column is-3 filteredColumn">{search.githubUrl}</div>
+                <div class="column is-2 filteredColumn">{search.school}</div>
+                <button
+                  class="button"
+                  id="buttonDelete"
+                  onClick={() => deleteUserHandler(search._id)}
+                >
+                  X
+                </button>
+              </div>
+              <hr></hr>
             </div>
           ))}
         </div>
-      {/* STUDENT LIST */}  
+        {/* STUDENT LIST */}
         <div>{studentsList}</div>
       </Container>
     </>

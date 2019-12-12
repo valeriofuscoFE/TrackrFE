@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, Fragment} from 'react';
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 // import {Container, Columns,Column} from 'react-bulma-components'
 import './styles/style.scss';
@@ -13,8 +13,8 @@ import landingPage from './components/landingPage';
  import StudentDashboard from './components/studentDashboard';
 // import StudentMyInfo from './components/modals/studentMyInfo';
 // import ManagerMyInfo from './components/modals/managerMyInfo';
-// import AddStudent from './components/modals/addStudent';
 // import SchoolDetails from './components/modals/schoolDetails';
+import AddStudent from './components/modals/addStudent';
 import adminDashboard from './components/adminDashboard';
 import Footer from './components/footer';
 // import AddJobApplication from './components/modals/addJobApplication';
@@ -46,7 +46,7 @@ const App = () => {
 	return (
 
 		<Provider store={store}>
-		<Router>
+		
 			<Fragment>
 {/* 
 				<Route exact path ='/' component = {Landing}/> */}
@@ -57,6 +57,7 @@ const App = () => {
 						<Route path='/studentslist' component={StudentsList} />
 						<Route path='/studentskpi' component={StudentsKPI} />
 						<Route path='/userslist' component={UsersList} />
+						<Route path='/addstudent' component={AddStudent} />
 						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
 						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
 						 <PrivateRoute exact path='/admin' component={adminDashboard}/>
@@ -64,7 +65,7 @@ const App = () => {
 				</section>
 				
 			</Fragment>
-		</Router>
+		
 		<Footer/>
     
 		</Provider>
