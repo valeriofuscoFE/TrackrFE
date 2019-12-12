@@ -1,37 +1,44 @@
 import React, { useEffect } from 'react';
-import { useSelector ,useDispatch } from 'react-redux';
-import {getJobApplications} from '../actions/jobapplications'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getJobApplications } from '../actions/jobapplications';
 
 import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { ifStatement } from '@babel/types';
 
-const SideMenu = () => {
-	const dispatch = useDispatch();
-	useEffect(() => {
-	  dispatch(getJobApplications());
-	}, [])
-	
-	const jobApplicationsArray = useSelector((state) => state.jobapplications);
-	
+const SideMenu = ({ getJobApplications, auth, jobapplications }) => {
+	useEffect(
+		() => {
+			if (auth.user) {
+				getJobApplications(auth.user._id);
+			}
+		},
+		[ auth.user ]
+	);
+
 	return (
 		<aside className="menu">
 			<p className="menu-label">YOUR JOB APPLICATIONS</p>
 			<ul className="menu-list">
-				<li>
-					{jobApplicationsArray.jobapplications.map(jobApp => 
+				{jobapplications.map((jobapplication) => (
+					<li key={jobapplication._id}>
 						<div>
-							<a>{jobApp.companyName}</a>
+							<a>{jobapplication.companyName}</a>
 						</div>
-					)}
-				</li>
-				<li>
-					<a>Facebook</a>
-				</li>
+					</li>
+				))}
 			</ul>
 		</aside>
 	);
 };
 
+SideMenu.propTypes = {
+	getJobApplications: PropTypes.func.isRequired
+};
 
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+	jobapplications: state.jobapplications.jobapplications
+});
 
-
-export default SideMenu;
+export default connect(mapStateToProps, { getJobApplications })(SideMenu);
