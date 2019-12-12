@@ -25,8 +25,8 @@ const TopNavBarManager = () => (
             <img
               src={Profilepicture}
               class="profilepicture"
-              alt="profilepicture"
               width="50px"
+              alt=""
             />
           </a>
 

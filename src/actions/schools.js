@@ -8,7 +8,7 @@ import{
 
 export const getSchools =() => async dispatch =>{
 	try {
-		var res = await fetch("http://localhost:4000/school" , {
+		var res = await fetch(process.env.REACT_APP_URL + "school" , {
 				method: "GET",
 				headers: {
 					"Authorization": "Bearer " + localStorage.token
@@ -28,7 +28,8 @@ export const getSchools =() => async dispatch =>{
 
 	export const getSchoolbyId =(id) => async dispatch =>{
 		try {
-				var res = await fetch("http://localhost:4000/school/"+id , {
+			// var token = localStorage.getItem("accessToken");
+				var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 					method: "GET",
 					headers: {
 						"Authorization": "Bearer " + localStorage.token
@@ -51,7 +52,7 @@ export const getSchools =() => async dispatch =>{
 
 	export const addSchool =(state) => async dispatch =>{
 		try {
-			   var res = await fetch("http://localhost:4000/school/create" , {
+			   var res = await fetch(process.env.REACT_APP_URL + "school/create" , {
 					method: "POST",
 					body: JSON.stringify(state),
 					headers: {
@@ -75,7 +76,7 @@ export const getSchools =() => async dispatch =>{
 
 		export const deleteSchool =(id) => async dispatch =>{
 			try {
-				var res = await fetch("http://localhost:4000/school/"+id , {
+				var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 						method: "DELETE",						
 						headers: {
 							"Authorization": "Bearer " + localStorage.token,						
@@ -98,7 +99,8 @@ export const getSchools =() => async dispatch =>{
 
 export const updateSchool =(state,id) => async dispatch =>{
 				try {
-					var res = await fetch("http://localhost:4000/school/"+id , {
+			
+						var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 							method: "PUT",
                             body: JSON.stringify(state),
 					        headers: {

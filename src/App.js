@@ -34,6 +34,8 @@ import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
 // import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
 
+require('dotenv').config()
+
 
 if(localStorage.token){
 	setAuthToken(localStorage.token);
