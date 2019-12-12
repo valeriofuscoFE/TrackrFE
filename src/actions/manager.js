@@ -2,7 +2,8 @@ import{
     GET_RECENTACTIVITIES,
     GET_STUD_NAME,
     GET_TOTALAPPLICATIONS,
-    GET_WEEKAPPLICATIONS
+    GET_WEEKAPPLICATIONS,
+    GET_TOTAL_STUDENTS
 } from './types'
 
 export const getRecentActivities =() => async dispatch =>{
@@ -99,6 +100,29 @@ export const getRecentActivities =() => async dispatch =>{
                     
                 }
     
+
+                export const getTotalStudents =() => async dispatch =>{
+	
+                    try {
+                                var res = await fetch("http://localhost:4000/user/student", {
+                                method: "GET",
+                                headers: {
+                                    "Authorization": "Bearer " + localStorage.token
+                                },
+                            })
+                            if (res.ok) {
+                                var totStudents = await res.json();
+                                totStudents = totStudents.studentUsers		
+                        dispatch({
+                            type: GET_TOTAL_STUDENTS,
+                            payload: totStudents
+                        })
+                    }
+                    } catch (err) {
+                        console.log(err)
+                    }
+                        
+                    }
 
 
 
