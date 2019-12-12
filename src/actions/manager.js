@@ -6,10 +6,12 @@ import{
     GET_TOTAL_STUDENTS
 } from './types'
 
+require('dotenv').config()
+
 export const getRecentActivities =() => async dispatch =>{
     
     try {
-                var res = await fetch("http://localhost:4000/application", {
+                var res = await fetch(process.env.REACT_APP_URL + "application", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + localStorage.token
@@ -32,7 +34,7 @@ export const getRecentActivities =() => async dispatch =>{
     export const getStudentName =() => async dispatch =>{
     
         try {
-                  var res = await fetch("http://localhost:4000/user/", {
+                  var res = await fetch(process.env.REACT_APP_URL + "user", {
                         method: "GET",
                         headers: {
                             "Authorization": "Bearer " + localStorage.token
@@ -55,7 +57,7 @@ export const getRecentActivities =() => async dispatch =>{
         export const getTotalApplications =() => async dispatch =>{
 	
             try {
-                        var res = await fetch("http://localhost:4000/application/totApp", {
+                        var res = await fetch(process.env.REACT_APP_URL + "application/totApp", {
                         method: "GET",
                         headers: {
                             "Authorization": "Bearer " + localStorage.token
@@ -79,7 +81,7 @@ export const getRecentActivities =() => async dispatch =>{
             export const getTotalAppsInAWeek =() => async dispatch =>{
 	
                 try {
-                            var res = await fetch("http://localhost:4000/application/AppsWeek", {
+                            var res = await fetch(process.env.REACT_APP_URL + "application/AppsWeek", {
                             method: "GET",
                             headers: {
                                 "Authorization": "Bearer " + localStorage.token
@@ -104,12 +106,13 @@ export const getRecentActivities =() => async dispatch =>{
                 export const getTotalStudents =() => async dispatch =>{
 	
                     try {
-                                var res = await fetch("http://localhost:4000/user/student", {
+                                var res = await fetch(process.env.REACT_APP_URL + "user/student", {
                                 method: "GET",
                                 headers: {
                                     "Authorization": "Bearer " + localStorage.token
                                 },
                             })
+                            console.log(process.env.REACT_APP_URL)
                             if (res.ok) {
                                 var totStudents = await res.json();
                                 totStudents = totStudents.studentUsers		

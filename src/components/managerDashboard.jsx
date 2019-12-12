@@ -39,6 +39,7 @@ class ManagerDashboard extends React.Component {
         ? student.name
         : "";
     }
+   
   }
 
   onClickHandler = async () => {
