@@ -5,7 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import TopNavBarAdmin from '../components/navbars/topNavBarAdmin';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Box, Container, Columns, Column } from 'react-bulma-components'
+import { Container } from 'react-bulma-components'
 import { getSchools, addSchool, deleteSchool, updateSchool, getSchoolbyId } from '../actions/schools'
 
 import { connect } from 'react-redux';
@@ -35,8 +35,8 @@ class AdminDashboard extends React.Component {
   }
 
   handleInput = async input => {
-    var newSchool = this.state.school; //we are taking one object here 
-    var currentId = input.currentTarget.id; //this is when we type smthng in textbox or any input    
+    var newSchool = this.state.school; 
+    var currentId = input.currentTarget.id; 
     if (currentId === "name") {
       newSchool[currentId] = (input.currentTarget.value);
     }
@@ -79,6 +79,14 @@ class AdminDashboard extends React.Component {
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal });
   };
+
+  // updateSchool=async e=>{
+  //   var schoolId = e.currentTarget.value;
+  //   await this.props.updateSchoolThunk(this.props.school,schoolId)
+  //   this.setState({
+      
+  //   })
+  // }
 
   deleteSchool = async e => {
     var schoolId = e.currentTarget.value;
@@ -158,7 +166,8 @@ class AdminDashboard extends React.Component {
                 Close
                      </Button>
               <Button variant="primary" style={{ backgroundColor: "#2867B2" }}
-                onClick={() => { this.toggleModal(); this.props.updateSchoolThunk(this.state.school, this.props.schools.schools._id); this.props.getSchoolsThunk() }}>
+                onClick={() => { this.toggleModal(); this.props.updateSchoolThunk(this.state.school, this.props.schools.schools._id); this.setState({show:false});
+                this.props.getSchoolsThunk() }}>
                 Update
                    </Button>
             </Modal.Footer>
