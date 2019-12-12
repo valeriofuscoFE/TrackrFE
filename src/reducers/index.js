@@ -4,9 +4,8 @@ import usersReducer from './usersReducer'
 import updateReducer from './updateReducer'
 import profile from './profile'
 import schools from './schools'
-import applications from './manager'
-import students from './manager'
-import AppCount from './manager'
+import manager from './manager'
+
 
 
 export default combineReducers({
@@ -17,5 +16,6 @@ export default combineReducers({
 	applications,
 	students,
 	AppCount,
+	manager,
 	schools
 })

@@ -5,15 +5,17 @@ import diagrampicture2 from '../styles/diagrampicture2.png'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import React from 'react';
 import TopNavBarManager from './navbars/topNavBarManager';
-
 import { Container} from 'react-bulma-components'
 import { Alert } from 'react-bootstrap';
-import { getRecentActivities,getStudentName } from '../actions/manager'
+import { getRecentActivities,getStudentName, getTotalApplications, getTotalAppsInAWeek } from '../actions/manager'
+
 const mapStateToProps = state =>state
 
 const mapDispatchToProps = dispatch => ({
-  getActicitiesThunk :()=>dispatch(getRecentActivities()),
-  getStudNameThunk:(id)=>dispatch(getStudentName(id))
+  getActivitiesThunk :()=>dispatch(getRecentActivities()),
+  getStudNameThunk:(id)=>dispatch(getStudentName(id)),
+  getTotalApplicationsThunk :()=>dispatch(getTotalApplications()),
+  getTotalAppsInAWeekThunk :()=>dispatch(getTotalAppsInAWeek()),
 });
 
 class ManagerDashboard  extends React.Component {
@@ -23,14 +25,15 @@ class ManagerDashboard  extends React.Component {
    }
 
    componentDidMount=async()=>{
-    await this.props.getActicitiesThunk();
+    await this.props.getActivitiesThunk();
     await this.props.getStudNameThunk();      
-    this.getTotalApplsInAWeek();
+    await this.props.getTotalApplicationsThunk();
+    await this.props.getTotalAppsInAWeekThunk();
     this.getTotalStudents()
    }
 
     getName=(id)=>{
-      var arr = this.props.students.students        
+      var arr = this.props.manager.students        
        if(arr !==undefined)
        {
          var student=[]
@@ -42,48 +45,46 @@ class ManagerDashboard  extends React.Component {
       } 
      }
 
-     getTotalApplictaions=()=>{
-       var arrApps=this.props.applications.applications       
-       return arrApps.length
-     }
-
 
      getTotalStudents=()=>{
-      var arrStudents=this.props.students.students
+      var arrStudents=this.props.manager.students
       
       this.setState({
         students:arrStudents
       })
     }
 
-     getTotalApplsInAWeek=()=>{
-      let curr = new Date() 
-      let week = []
-      
-      for (let i = 1; i <= 7; i++) {
-        let first = curr.getDate() - curr.getDay() + i 
-        let day = new Date(curr.setDate(first)).toISOString().slice(0, 10)
-        week.push(day)
-      }
-      var finalArr=[]
-      var arrApps=this.props.applications.applications
+    onClickHandler = async () => {
+        let resp = await fetch('http://localhost:4000/application/downloadPdf', {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + localStorage.token
+        },
+    })
 
-      var Newapplications = arrApps.filter(function(application) {
-        return application.status =="applied";
-      });
-     
-      Newapplications.forEach((e1)=>week.forEach((e2)=>{
-        if(e1.createdAt.substr(0,10)==e2)
-        {
-          finalArr.push(e1)
-        }
-      }))
-       this.setState({
-        week:finalArr.length
-      }       
-      )
-     }
+      const blob = await resp.blob()
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `export.pdf`);
+      // 3. Append to html page
+      document.body.appendChild(link);
+      // 4. Force download
+      link.click();
+      // 5. Clean up and remove the link
+      link.parentNode.removeChild(link);
 
+      //https://medium.com/yellowcode/download-api-files-with-react-fetch-393e4dae0d9e
+    }
+
+  //   onClickHandler = async () => {
+  //     await fetch('http://localhost:4000/application/downloadPdf', {
+  //     method: "GET",
+  //     headers: {
+  //         "Authorization": "Bearer " + localStorage.token
+  //     },
+  // })
+  // }
 
   render() { 
     return ( 
@@ -97,12 +98,12 @@ class ManagerDashboard  extends React.Component {
 ​
     <div className="columns" >
       <div className="column is-12">
-          <button className=" button is-pulled-left" id="buttonBlack">EXPORT</button>
+          <button className=" button is-pulled-left" id="buttonBlack" onClick={this.onClickHandler}>EXPORT</button>
           TOTAL APPLICATIONS :
-         <b> {this.getTotalApplictaions()}</b>
+         <b> {this.props.manager.appCount}</b>
           <br></br>
          TOTAL APPLICATIONS THIS WEEK :
-    <b>{this.state.week}</b>
+    <b>{this.props.manager.weekApps}</b>
      <br></br>   
     <img
         src={diagrampicture1}
@@ -132,7 +133,7 @@ class ManagerDashboard  extends React.Component {
 ​
   {/* RECENT ACTIVITIES */}
   <div className="column topColumn is-3">RECENT ACTIVITIES
-  { this.props.applications.applications && this.props.applications.applications.map((app) => (
+  { this.props.manager.applications && this.props.manager.applications.map((app) => (
       <div className="alert alert-primary" role="alert">
      <b>{this.getName(app.studentId)}</b>  {app.status}  <b>- {app.companyName}</b>
      </div>

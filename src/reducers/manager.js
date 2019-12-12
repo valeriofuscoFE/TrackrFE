@@ -1,8 +1,10 @@
-import {GET_RECENTACTIVITIES, GET_STUD_NAME,GET_APPLICATION_COUNT} from '../actions/types';
+import {GET_RECENTACTIVITIES, GET_STUD_NAME, GET_TOTALAPPLICATIONS, GET_WEEKAPPLICATIONS} from '../actions/types';
 const initialState ={
     applications:[],
     studeName:[],
-    loading:true
+    appCount: null,
+    weekApps: null,
+    loading: true
 }
 export default function(state = initialState, action ){
  const {type,payload} = action; 
@@ -21,10 +23,16 @@ export default function(state = initialState, action ){
                     students:payload,
                     loading:false
                 };
-        case GET_APPLICATION_COUNT: 
+        case GET_TOTALAPPLICATIONS: 
                 return{
                     ...state,
-                    AppCount:payload,
+                    appCount:payload,
+                    loading:false
+                };
+        case GET_WEEKAPPLICATIONS: 
+                return{
+                    ...state,
+                    weekApps:payload,
                     loading:false
                 }
         default:
