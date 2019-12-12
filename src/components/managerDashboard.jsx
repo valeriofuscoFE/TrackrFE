@@ -115,7 +115,7 @@ class ManagerDashboard extends React.Component {
             <div className="column topColumn is-3">RECENT ACTIVITIES
   {this.props.manager.applications && this.props.manager.applications.map((app) => (
               <div className="alert alert-primary" role="alert">
-                <b>{this.getName(app.studentId)}</b>  {app.status}  <b>- {app.companyName}</b>
+                <b>{this.getName(app.studentId)} -</b>  {app.status}  <b>- {app.companyName}</b>
               </div>
             )
             )}

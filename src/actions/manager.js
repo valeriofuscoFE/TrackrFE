@@ -6,7 +6,6 @@ import{
     GET_TOTAL_STUDENTS
 } from './types'
 
-require('dotenv').config()
 
 export const getRecentActivities =() => async dispatch =>{
     

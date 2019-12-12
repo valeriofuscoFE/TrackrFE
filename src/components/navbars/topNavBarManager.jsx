@@ -22,7 +22,7 @@ const TopNavBarManager = () => (
           <a class="navbar-item" href="/home">
             <img
               class="profilepicture"
-              alt="profilepicture"
+              alt=""
             />
           </a>
 
