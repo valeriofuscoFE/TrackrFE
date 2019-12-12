@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import { loadUser } from '../actions/auth.js';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Box, Container, Columns, Column } from 'react-bulma-components';
 import Modal from './modals/Modal';
 import SideMenu from './SideMenu';
 import useModal from './modals/useModal';
-
+import JaDetails from './jaDetails';
 const StudentDashboard = () => {
 	const { isShowing, toggle } = useModal();
 
@@ -24,22 +21,15 @@ const StudentDashboard = () => {
 			</div>
 			<div className="columns">
 				<div className="column">
-					<SideMenu jobapplications={{}} />
+					<SideMenu />
 				</div>
 
 				<div className="column is-three-fifths">
-					<h1>JOB APP INFOS</h1>
+					<JaDetails />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-StudentDashboard.propTypes = {};
-
-const mapStateToProps = (state) => ({
-	user: state.user,
-	jobapplications: state.jobapplications
-});
-
-export default connect(mapStateToProps, { loadUser })(StudentDashboard);
+export default StudentDashboard;
