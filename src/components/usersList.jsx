@@ -19,10 +19,11 @@ const UsersList = ({fetchUsers,usersReducer}) => {
 
 const deleteUserHandler = (_id) => {
 
-  fetch("http://localhost:4000/user/" +_id , {
+  fetch(process.env.REACT_APP_URL + "user/"  +_id , {
     method: "DELETE"
    
   });
+  fetchUsers();
 }
 
   const usersList = usersReducer.map(user=>(
@@ -52,6 +53,7 @@ const searchHandler = e =>{
 useEffect(() => {
   const results = usersReducer.filter(user=>
     user.name.toString().toLowerCase().includes(searchUser.toLowerCase())
+    || user.surname.toString().toLowerCase().includes(searchUser.toLowerCase())
   );
 
   if (searchUser.length > 2)
@@ -73,7 +75,7 @@ console.log("searchResult",searchResult)
             <input
               class="input"
               type="text"
-              placeholder="SEARCH STUDENT"
+              placeholder="SEARCH USER"
               onChange={searchHandler}
               value={searchUser}
             />

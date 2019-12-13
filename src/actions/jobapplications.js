@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID } from './types';
+import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID, UPDATE_JA } from './types';
 
 export const getJobApplications = (studentId) => async (dispatch) => {
 	console.log(studentId);
@@ -61,5 +61,23 @@ export const addJobApplication = ({ companyName, role, location, description, st
 		dispatch({
 			type: JA_ERROR
 		});
+	}
+};
+
+export const modifyJobApplication = ({ jaId, formData }) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		};
+		const res = await axios.put(`http://localhost:4000/application/${jaId}`, formData, config);
+
+		dispatch({
+			type: UPDATE_JA,
+			payload: res.data
+		});
+	} catch (err) {
+		console.log(err);
 	}
 };
