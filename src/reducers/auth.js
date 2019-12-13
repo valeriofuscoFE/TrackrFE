@@ -12,7 +12,8 @@ import {
 	token: localStorage.getItem('token'),
 	isAuthenticated: null,
 	loading: true,
-	user: null
+	user: null,
+	isRegistered: null,
   };
   
   export default function(state = initialState, action) {
@@ -27,6 +28,11 @@ import {
 		  user: payload
 		};
 	  case REGISTER_SUCCESS:
+			return {
+				...state,
+				isRegistered: true
+			
+			  };
 	  case LOGIN_SUCCESS:
 		localStorage.setItem('token', payload);
 		return {

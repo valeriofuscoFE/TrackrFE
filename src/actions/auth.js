@@ -36,14 +36,16 @@ export const loadUser = ()=> async dispatch => {
 
 
 //Register User 
-export const register = ({name ,surname, email,password,role,schoolName, gitURL}) => async dispatch => {
+export const register = ({name ,surname, email,password,role,schoolName, gitURL, username}) => async dispatch => {
 	 const config = {
 		 headers:{
 			 'Content-Type':'application/json'
 		 }
 	 }
-
-	 const body = JSON.stringify({name ,surname, email,password,role,schoolName, gitURL})
+if (role === ''){
+	role = 'Manager'
+}
+	 const body = JSON.stringify({name ,surname, email,password,role,schoolName, gitURL, username})
 
 	 try {
 		 const res = await axios.post(process.env.REACT_APP_URL + 'user/register',body,config);
