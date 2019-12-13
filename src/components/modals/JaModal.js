@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { addJobApplication } from '../../actions/jobapplications';
+import { modifyJobApplication, getJobApplicationById } from '../../actions/jobapplications';
 import ReactDOM from 'react-dom';
 
-const Modal = ({ isShowing, hide, auth, addJobApplication }) => {
+const JaModal = ({ isShowing, hide, auth, modifyJobApplication, jobapplicationId }) => {
 	const [ formData, setFormData ] = useState({
 		companyName: '',
 		role: '',
@@ -14,20 +13,17 @@ const Modal = ({ isShowing, hide, auth, addJobApplication }) => {
 
 	const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+	const { companyName, role, location, description } = formData;
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		addJobApplication({
-			companyName,
-			role,
-			location,
-			description,
-			studentId: `${auth.user._id}`
+		modifyJobApplication({
+			jaId: `${jobapplicationId}`,
+			formData
 		});
 
 		console.log(formData);
 	};
-
-	const { companyName, role, location, description } = formData;
 
 	return isShowing
 		? ReactDOM.createPortal(
@@ -107,7 +103,11 @@ const Modal = ({ isShowing, hide, auth, addJobApplication }) => {
 
 const mapStateToProps = (state) => ({
 	auth: state.auth,
-	jobapplications: state.jobapplications
+	jobapplicationId: state.jobapplications.jobapplicationId,
+	companyName: state.jobapplications.jobapplication.companyName,
+	role: state.jobapplications.jobapplication.role,
+	location: state.jobapplications.jobapplication.location,
+	description: state.jobapplications.jobapplication.description
 });
 
-export default connect(mapStateToProps, { addJobApplication })(Modal);
+export default connect(mapStateToProps, { modifyJobApplication })(JaModal);

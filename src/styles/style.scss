@@ -1,193 +1,201 @@
 @import "../variables";
 @import "./header";
 @import "./functions";
-                  
-   
 
-body { 
-    background-image: url('background.png');
-    background-repeat: no-repeat;
-    background-size: 1500px 1500px;
-    // font-family: Open Sans;
-    letter-spacing: 0.15em;
-    color:$primarytextBlack;
-    // background-color: red;
+body {
+	background-image: url('background.png');
+	background-repeat: no-repeat;
+	background-size: 1500px 1500px;
+	// font-family: Open Sans;
+	letter-spacing: 0.15em;
+	color: $primarytextBlack;
+	// background-color: red;
 }
 
-
-#managerImage1 { 
-    background-image: url('diagrampicture1.png');
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: auto;
+#managerImage1 {
+	background-image: url('diagrampicture1.png');
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
 }
 
-#managerImage2 { 
-    background-image: url('diagrampicture2.png');
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: auto;
+#managerImage2 {
+	background-image: url('diagrampicture2.png');
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
 }
 
-
-#buttonBlack{
-    @include backgroundText($primaryBtnBlack,$primarytextWhite);
-    &:hover{color: $secondaryHover;}
-    padding:10px;
-    padding-top:5px;
-    padding-bottom:5px;
-    text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-    letter-spacing: 3px;
+#buttonBlack {
+	@include backgroundText($primaryBtnBlack,$primarytextWhite);
+	&:hover {
+		color: $secondaryHover;
+	}
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	border-radius: $primaryButtonRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+	letter-spacing: 3px;
 }
 
-#buttonWhite{
-    @include backgroundText($primaryBtnWhite,$primarytextBlack);
-    &:hover{color: $secondaryHover;}
-    padding:10px;
-    padding-top:5px;
-    padding-bottom:5px;
-    text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-    letter-spacing: 3px;
+#buttonWhite {
+	@include backgroundText($primaryBtnWhite,$primarytextBlack);
+	&:hover {
+		color: $secondaryHover;
+	}
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	border-radius: $primaryButtonRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+	letter-spacing: 3px;
 }
 
-#buttonDelete{
-    @include backgroundText($deleteBtn,$primarytextBlack);
-    &:hover{color: $secondaryHover;}
-    padding:10px;
-    padding-top:5px;
-    padding-bottom:5px;
-    text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-    letter-spacing: 3px;
+#buttonDelete {
+	@include backgroundText($deleteBtn,$primarytextBlack);
+	&:hover {
+		color: $secondaryHover;
+	}
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	border-radius: $primaryButtonRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+	letter-spacing: 3px;
 }
 
 .footer {
-    @include backgroundText($primaryBgColor,$primarytextBlack);
-    // position: fixed;
-    bottom: 0;
-    margin-top: 300px;
-    padding-bottom: 20px;
-    padding-top: 70px;
-    box-shadow: $primaryBorderShadow;
-    letter-spacing: 4px;
- 
-    // height:20%;
-    // background-color: red;
-    // color: white;
-    // text-align: center;
+	@include backgroundText($primaryBgColor,$primarytextBlack);
+	// position: fixed;
+	bottom: 0;
+	margin-top: 300px;
+	padding-bottom: 20px;
+	padding-top: 70px;
+	box-shadow: $primaryBorderShadow;
+	letter-spacing: 4px;
 
-  }
-
-  .footer hr {
-     
-      box-shadow: $primaryBorderShadow;
-      background-color: transparent;
-  }
-
-  hr {
-     
-    box-shadow: $primaryBorderShadow;
-    background-color: transparent;
+	// height:20%;
+	// background-color: red;
+	// color: white;
+	// text-align: center;
 }
 
-.topNavBar{
-    @include backgroundText($secondaryBgColor,$primarytextWhite);
-    margin-bottom: 50px;
+.footer hr {
+	box-shadow: $primaryBorderShadow;
+	background-color: transparent;
+}
+
+hr {
+	box-shadow: $primaryBorderShadow;
+	background-color: transparent;
+}
+
+.topNavBar {
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
+	margin-bottom: 50px;
 }
 
 .navbar-start .navbar-item {
-    @include backgroundText($secondaryBgColor,$primarytextWhite);
-    &:hover{background: $secondaryHover;}
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
+	&:hover {
+		background: $secondaryHover;
+	}
 }
 
 .navbar-brand .navbar-item {
-    @include backgroundText($secondaryBgColor,$primarytextWhite);
-    &:hover{color: $secondaryHover;}
-    text-decoration: overline;
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
+	&:hover {
+		color: $secondaryHover;
+	}
+	text-decoration: overline;
 }
 
-.navbar-burger{
-    @include backgroundText($thirdHover,$primarytextBlack);
-    &:hover{color: $secondaryHover;}
+.navbar-burger {
+	@include backgroundText($thirdHover,$primarytextBlack);
+	&:hover {
+		color: $secondaryHover;
+	}
 }
 
-.profilepicture{
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    &:hover{color: $secondaryHover;}
+.profilepicture {
+	border-radius: 10px;
+	max-width: 100%;
+	height: auto;
+	&:hover {
+		color: $secondaryHover;
+	}
 }
-
 
 .registerColumn {
-    @include backgroundText($secondaryBgColor,$primarytextWhite); 
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
 }
 
 .registerColumn .label {
-    @include backgroundText($secondaryBgColor,$primarytextWhite); 
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
 }
 
 .registerColumn .button {
-    @include backgroundText($primaryBgColor,$primarytextBlack); 
-    &:hover{background-color: $secondaryHover;}
-    border-radius:$primaryButtonRadius;
+	@include backgroundText($primaryBgColor,$primarytextBlack);
+	&:hover {
+		background-color: $secondaryHover;
+	}
+	border-radius: $primaryButtonRadius;
 }
 
 .registerColumn .input {
-    @include backgroundText($secondaryBgColor,$primarytextWhite); 
-    &:hover{background-color:$thirdHover;};
-    &::placeholder {
-        color:$primarytextBlack;
-      }
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
+	&:hover {
+		background-color: $thirdHover;
+	}
+	&::placeholder {
+		color: $primarytextBlack;
+	}
 }
 
 #roleOption {
-    @include backgroundText($secondaryBgColor,$thirdHover); 
-    &:hover{background-color:$thirdHover;
-            color: black};
-    &::placeholder {
-        color:$primarytextBlack;
-    }
-    border-color: $primaryBgColor;
+	@include backgroundText($secondaryBgColor,$thirdHover);
+	&:hover {
+		background-color: $thirdHover;
+		color: black;
+	}
+	&::placeholder {
+		color: $primarytextBlack;
+	}
+	border-color: $primaryBgColor;
 }
 
 .modal-backdrop {
-    z-index: 0;
-  
-    
-  }
-  .modal {
+	z-index: 0;
+}
+.modal {
+	z-index: auto;
+	display: block !important;
+	height: fit-content !important;
+	background: none !important;
+	position: fixed !important;
+	margin: 0rem auto;
+	border-radius: 3px;
+	max-width: 500px;
+}
 
-        z-index: auto;
-        display: block !important;
-        height: fit-content !important;
-        background: none !important;
-        position: fixed !important;
-        margin: 0rem auto;
-        border-radius: 3px;
-        max-width: 500px;
-     
-  }
+.modal-dialog-centered::before {
+	content: none;
+}
 
-  .modal-dialog-centered::before {
-    content: none;
-  }
-
-  .modal-dialog {
-    max-width: 500px;
-    margin: 5rem auto;
+.modal-dialog {
+	max-width: 500px;
+	margin: 5rem auto;
 }
 
 // .modalColumn {
-//     @include backgroundText($primaryBgColor,$primarytextBlack); 
+//     @include backgroundText($primaryBgColor,$primarytextBlack);
 //     margin-top: 10px;
 //     padding:25px;
 //     // text-align: center;
@@ -205,99 +213,95 @@ body {
 
 // }
 
-
-
-.topColumn{
-    @include backgroundText(0,$primarytextBlack);
-    margin-top: 10px;
-    margin-right:10px;
-    text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-    word-wrap: break-word;
+.topColumn {
+	@include backgroundText(0,$primarytextBlack);
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: center;
+	border-radius: $primaryButtonRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+	word-wrap: break-word;
 }
 
-.plusColumn{
-    @include backgroundText(0,$primarytextBlack);
-    margin-top: 10px;
-    margin-right:40px;
-    margin-left:30px;
-    text-align: center;
-    padding-top: 5px;
-    padding-bottom: 0px;
-    border-radius:$primaryButtonRadius;
-    //border:$thirdCardBorderColor; 
-    box-shadow: $primaryBorderShadow;
-}    
-.bottomColumn{
-    color:$primarytextBlack;
-    margin-top: 50px;
-    margin-right:10px;             
-    border-radius:$primaryCardRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
+.plusColumn {
+	@include backgroundText(0,$primarytextBlack);
+	margin-top: 10px;
+	margin-right: 40px;
+	margin-left: 30px;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	border-radius: $primaryButtonRadius;
+	//border:$thirdCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+}
+.bottomColumn {
+	color: $primarytextBlack;
+	margin-top: 50px;
+	margin-right: 10px;
+	border-radius: $primaryCardRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
 }
 
-.filteredColumn{
-    @include backgroundText($secondaryBgColor,$primarytextWhite);
-    margin-top: 10px;
-    margin-right:10px;
-    text-align: center;
-    border-radius:$primaryButtonRadius;
-    border:$secondaryCardBorderColor;
-    box-shadow: $primaryBorderShadow;
-    word-wrap: break-word;
+.filteredColumn {
+	@include backgroundText($secondaryBgColor,$primarytextWhite);
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: center;
+	border-radius: $primaryButtonRadius;
+	border: $secondaryCardBorderColor;
+	box-shadow: $primaryBorderShadow;
+	word-wrap: break-word;
 }
 
-.logoButton{
-    box-shadow: $primaryBorderShadow;
-    border-radius:$primaryButtonRadius;
-   //  border:$primaryCardBorderColor;
-     background-color: transparent;
-    margin-right:5px;
-
+.logoButton {
+	box-shadow: $primaryBorderShadow;
+	border-radius: $primaryButtonRadius;
+	//  border:$primaryCardBorderColor;
+	background-color: transparent;
+	margin-right: 5px;
 }
 
 .bottomColumn hr {
-  
-    box-shadow: $primaryBorderShadow;
-    background-color:rgba(43, 43, 40, 0.1);
-    padding-left: 0px;
-    padding-right: 0px;
+	box-shadow: $primaryBorderShadow;
+	background-color: rgba(43, 43, 40, 0.1);
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
-#bottomColumn1{
-    @include cardBackground($primaryBtnWhite);
-}       
-
-#bottomColumn2{
-    @include cardBackground($pinkBG);
+#bottomColumn1 {
+	@include cardBackground($primaryBtnWhite);
 }
 
-#bottomColumn3{
-    @include cardBackground($purpleBg);
+#bottomColumn2 {
+	@include cardBackground($pinkBG);
 }
 
-#bottomColumn4{
-    @include cardBackground($cyanBg);
+#bottomColumn3 {
+	@include cardBackground($purpleBg);
 }
 
-#bottomColumn5{
-    @include cardBackground($darkPinkBg);
+#bottomColumn4 {
+	@include cardBackground($cyanBg);
 }
 
-#managerImage1 { 
-    background-image: url('diagrampicture1.png');
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: auto;
+#bottomColumn5 {
+	@include cardBackground($darkPinkBg);
 }
-#managerImage2 { 
-    background-image: url('diagrampicture2.png');
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: auto;
+
+#managerImage1 {
+	background-image: url('diagrampicture1.png');
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
+}
+#managerImage2 {
+	background-image: url('diagrampicture2.png');
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
 }
 
 // .modal-backdrop {
@@ -310,28 +314,24 @@ body {
 //     background-color: #000;
 // }
 
-
 .modal-backdrop {
-    z-index: 0;
-  
-    
-  }
-  .modal {
-        z-index: auto;
-        display: block !important;
-        height: fit-content !important;
-        background: none !important;
-        position: fixed !important;
-        margin: 0rem auto;
-        border-radius: 3px;
-       // max-width: 500px;
-        //padding-right: 100px !important;
-     
-  }
+	z-index: 0;
+}
+.modal {
+	z-index: auto;
+	display: block !important;
+	height: fit-content !important;
+	background: none !important;
+	position: fixed !important;
+	margin: 0rem auto;
+	border-radius: 3px;
+	// max-width: 500px;
+	//padding-right: 100px !important;
+}
 
-  .modal-content{
-      width:450px !important
-  }
+.modal-content {
+	width: 450px !important;
+}
 
 //   .modal-dialog-centered::before {
 //     content: none;
