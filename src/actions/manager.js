@@ -10,7 +10,7 @@ import{
 export const getRecentActivities =() => async dispatch =>{
     
     try {
-                var res = await fetch(process.env.REACT_APP_URL + "application", {
+                var res = await fetch(process.env.REACT_APP_URL + "application/app", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + localStorage.token
