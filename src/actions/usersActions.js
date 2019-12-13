@@ -10,12 +10,12 @@ export const fetchUsers = () => async dispatch =>{
 	console.log("fetching users list")
 	try {
 
-			var res = await fetch("http://localhost:4000/user/", {
+			var res = await fetch(process.env.REACT_APP_URL + "user/", {
 				method: "GET",
 				headers: {
 					"Authorization": "Bearer " +    
-					//  localStorage.token
-					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGYxMDMyMThkN2IxNTNmNDhlN2Y2ZmIiLCJpYXQiOjE1NzYwNzYwNzksImV4cCI6MTU3NzA3Njg3OX0.Ia456IrjdznKM-ksWCuWChT2lk2irik66zTWZ4oPsQw"
+					 localStorage.token
+					// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGYyMWE0Mjg2OGE5NjQ4ZTQ3ZWRiZDQiLCJpYXQiOjE1NzYxNDc1NTUsImV4cCI6MTU3NzE0ODM1NX0.Wd5wxc8l-Z2NeaTwNdJRQN0ZbgbwCCVo8d5Y8k814uQ"
 				},
 			})
 			if (res.ok) {
@@ -33,4 +33,6 @@ export const fetchUsers = () => async dispatch =>{
 	}
 		
 	};
+
+	
 

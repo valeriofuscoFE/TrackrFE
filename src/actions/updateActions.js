@@ -1,37 +1,59 @@
+import { UPDATE_USERS,GET_STUDENT } from "./types";
 
-import{
-	
-	UPDATE_USERS
-	
-} from './types'
+export const updateUsers = (state,id) => async dispatch => {
+  try {
+
+    var res = await fetch(process.env.REACT_APP_URL + "user/" + id, {
+      method: "PUT",
+      body: JSON.stringify(state),
+      headers: {
+        "Authorization": "Bearer " + localStorage.token,
+        "Content-Type": "application/json"
+           }	
+
+    });
+    if (res.ok) {
+      var updateusers = await res.json();
+      console.log("updateusers actions",updateusers);
 
 
-	export const updateUsers = (id) => async dispatch =>{
-		console.log("updating users list")
-		try {
+      dispatch({
+        type: UPDATE_USERS,
+        payload: updateusers
+      });
+    }
+
+    
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const getStudentbyId = (id) => async dispatch =>{
 	
-				var res = await fetch("http://localhost:4000/user/" + id , {
-					method: "PUT",
-					body: JSON.stringify(),
-					headers: {
-						"Authorization": "Bearer " +    
-						//  localStorage.token
-						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGYxMDMyMThkN2IxNTNmNDhlN2Y2ZmIiLCJpYXQiOjE1NzYwNzYwNzksImV4cCI6MTU3NzA3Njg3OX0.Ia456IrjdznKM-ksWCuWChT2lk2irik66zTWZ4oPsQw"
-					},
-				})
-				if (res.ok) {
-					var updateusers = await res.json();
-					console.log(updateusers)
-			
-			dispatch({
-				type: UPDATE_USERS,
-				payload: updateusers
+	try {
+
+			var res = await fetch(process.env.REACT_APP_URL + "user/" +id, {
+				method: "GET",
+				headers: {
+					"Authorization": "Bearer " +    
+					 localStorage.token
+				
+				},
 			})
-		}
+			if (res.ok) {
+				var student = await res.json();
+				console.log("usersAction STUDENT",student)
 		
-		} catch (err) {
-			console.log(err)
-		}
-			
-		};
+		dispatch({
+			type: GET_STUDENT,
+			payload: student
+		})
+	}
+	// }
+	} catch (err) {
+		console.log(err)
+	}
+		
+	};
 

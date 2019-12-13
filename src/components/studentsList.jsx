@@ -1,4 +1,5 @@
 import React , {useState, useEffect, Component} from 'react';
+import {Link} from 'react-router-dom';
 import TopNavBarManager from './navbars/topNavBarManager';
 import Profilepicture from '../assets/profilepicture.jpg'
 import AddStudent from './modals/addStudent';
@@ -72,11 +73,9 @@ console.log("searchResult",searchResult)
   // : usersReducer.filter(student =>
   //     student.toString().toLowerCase().includes(searchStudent.toLowerCase())
   //   );
+
+
   // const [modalShow, setModalShow] = useState(false);
-
-
-
-  
 
   return (
     <>
@@ -102,7 +101,17 @@ console.log("searchResult",searchResult)
               EXPORT
             </button>
           </div>
-          {/* <div class="column is-1">
+          <div class="column is-1">
+            <div>
+              <Link to="/addstudent">
+                <button class=" button is-pulled-left" id="buttonBlack">
+                  +
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        {/* <div class="column is-1">
             <ButtonToolbar>
               <Button variant="primary" onClick={() => setModalShow(true)} id="buttonBlack">
                 + 
@@ -111,7 +120,6 @@ console.log("searchResult",searchResult)
               <AddStudent show={modalShow} onHide={() => setModalShow(false)} />
             </ButtonToolbar>
           </div> */}
-        </div>
 
         {/* SECOND ROW */}
         <div class="columns is-gapless is-centered">

@@ -99,8 +99,9 @@ export const getSchools =() => async dispatch =>{
 
 export const updateSchool =(state,id) => async dispatch =>{
 				try {
-			
-						var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
+					// var token = localStorage.getItem("accessToken");
+					console.log("hii",id)
+						var res = await fetch(process.env.REACT_APP_URL +"school/"+id , {
 							method: "PUT",
                             body: JSON.stringify(state),
 					        headers: {

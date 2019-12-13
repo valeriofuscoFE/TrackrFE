@@ -11,7 +11,8 @@ import { Box,Container, Columns,Column} from 'react-bulma-components'
 const LandingPage = ({register,isRegistered}) => {
 	const [formData, setFormData] = useState({
 		name: '',
-		surname:'',
+    surname:'',
+    username:'',
 		email: '',
 		password: '',
 		role:'',
@@ -25,12 +26,12 @@ const LandingPage = ({register,isRegistered}) => {
 
 	  const onSubmit = async e => {
 		e.preventDefault();
-		register({ name ,surname, email,password,role,schoolName, gitURL  });
+		register({ name ,surname,username, email,password,role,schoolName, gitURL, username: email  });
 
        console.log(formData)
 	  }
 	
-	  const { name ,surname, email,password,role, schoolName,gitURL   } = formData;
+	  const { name ,surname, username, email,password,role, schoolName,gitURL   } = formData;
 	  
 	
 
@@ -63,6 +64,15 @@ const LandingPage = ({register,isRegistered}) => {
   </div>
  
 </div>
+
+
+{/* <div className="field">
+  <label className="label"><small>USERNAME</small></label>
+  <div className="control">
+    <input name='username' className="input" type="text" placeholder="username" value={surname} onChange={e => onChange(e)}/>
+  </div>
+ 
+</div> */}
 
 
 <div className="field">

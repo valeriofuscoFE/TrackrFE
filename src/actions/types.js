@@ -12,6 +12,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const GET_PROFILE = 'GET_PROFILE';
 export const FETCH_USERS = 'FETCH_USERS';
 export const UPDATE_USERS = 'UPDATE_USERS';
+export const GET_STUDENT = 'GET_STUDENT';
 export const GET_SCHOOLS = 'GET_SCHOOLS';
 export const GET_RECENTACTIVITIES = 'GET_RECENTACTIVITIES';
 export const GET_STUD_NAME = 'GET_STUD_NAME';
