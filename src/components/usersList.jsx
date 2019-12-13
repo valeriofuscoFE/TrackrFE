@@ -19,10 +19,11 @@ const UsersList = ({fetchUsers,usersReducer}) => {
 
 const deleteUserHandler = (_id) => {
 
-  fetch("http://localhost:4000/user/" +_id , {
+  fetch(process.env.REACT_APP_URL + "user/"  +_id , {
     method: "DELETE"
    
   });
+  fetchUsers();
 }
 
   const usersList = usersReducer.map(user=>(

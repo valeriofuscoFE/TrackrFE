@@ -23,11 +23,11 @@ useEffect(()=>{
 
 const deleteUserHandler = async (id) => {
 
-  await fetch("http://localhost:4000/user/" + id , {
+  await fetch(process.env.REACT_APP_URL + "user/"  + id , {
     method: "DELETE"
    
   });
-
+  fetchUsers();
   console.log("id", id)
 }
 
