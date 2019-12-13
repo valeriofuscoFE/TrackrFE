@@ -33,10 +33,10 @@ export const getRecentActivities =() => async dispatch =>{
     export const getStudentName =() => async dispatch =>{
     
         try {
-                  var res = await fetch(process.env.REACT_APP_URL + "user", {
-            if(localStorage.token){
-                setAuthToken(localStorage.token);
-                }
+            //       var res = await fetch(process.env.REACT_APP_URL + "user", {
+            // if(localStorage.token){
+            //     setAuthToken(localStorage.token);
+            //     }
 
                   var res = await fetch(process.env.REACT_APP_URL + "user/", {
                         method: "GET",

@@ -15,9 +15,9 @@ class AddStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name:"",
-      surname:"",
-      email:"",
+      // name:"",
+      // surname:"",
+      // email:"",
       school:"",
       batch:"",
       showModal: false,
@@ -34,6 +34,7 @@ class AddStudent extends Component {
     var studentId = e.target.value;
     await this.props.getStudentbyIdThunk(studentId);
     this.setState({showModal:true})
+   
   }
 
 
@@ -48,6 +49,7 @@ class AddStudent extends Component {
   submitHandler = async (e) =>{
     e.preventDefault();
   console.log("student updated",this.props.updateReducer.student)
+  await this.props.fetchUsersThunk();
 }
 
     render() {
@@ -110,39 +112,17 @@ class AddStudent extends Component {
               }}
             >
               <Form.Group>
-                <Form.Label>Name</Form.Label>
+                <Form.Label>{this.props.updateReducer.student.name}</Form.Label>
                 <InputGroup>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={this.props.updateReducer.student.name}
-                    onChange={this.onValueChanged}
-                  />
                 </InputGroup>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Surname</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    type="text"
-                    name="surname"
-                    value={this.props.updateReducer.student.surname}
-                    onChange={this.onValueChanged}
-                  />
-                </InputGroup>
+                <Form.Label>{this.props.updateReducer.student.surname}</Form.Label>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Email address</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    type="text"
-                    name="email"
-                    value={this.props.updateReducer.student.email}
-                    onChange={this.onValueChanged}
-                  />
-                </InputGroup>
+                <Form.Label>{this.props.updateReducer.student.email}</Form.Label>
               </Form.Group>
 
               <Form.Group>
@@ -151,7 +131,8 @@ class AddStudent extends Component {
                   <Form.Control
                     type="text"
                     name="school"
-                    defaultValue={this.props.updateReducer.student.school}
+                    placeholder="write school name . . ."
+                    defaultValue={this.state.school}
                     onChange={this.onValueChanged}
                   />
                 </InputGroup>
@@ -163,7 +144,8 @@ class AddStudent extends Component {
                   <Form.Control
                     type="text"
                     name="batch"
-                    defaultValue={this.props.updateReducer.student.batch}
+                    placeholder="write batch name . . ."
+                    defaultValue={this.state.batch}
                     onChange={this.onValueChanged}
                   />
                 </InputGroup>

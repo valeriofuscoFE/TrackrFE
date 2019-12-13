@@ -1,4 +1,6 @@
-import {GET_RECENTACTIVITIES, GET_STUD_NAME, GET_TOTALAPPLICATIONS, GET_WEEKAPPLICATIONS, GET_TOTAL_STUDENTS} from '../actions/types';
+import {GET_RECENTACTIVITIES, GET_STUD_NAME, 
+GET_TOTALAPPLICATIONS, 
+GET_WEEKAPPLICATIONS, GET_TOTAL_STUDENTS} from '../actions/types';
 const initialState ={
     applications:[],
     studeName:[],
