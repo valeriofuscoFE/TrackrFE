@@ -2,8 +2,12 @@ import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getJobApplicationById } from '../actions/jobapplications';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
+import useModal from './modals/useModal';
+import JaModal from './modals/JaModal';
 
 const JaDetails = ({ getJobApplicationById, jobapplicationId, jobapplication }) => {
+	const { isShowing, toggle } = useModal();
+
 	useEffect(
 		() => {
 			if (jobapplicationId) {
@@ -27,7 +31,10 @@ const JaDetails = ({ getJobApplicationById, jobapplicationId, jobapplication }) 
 							<footer class="card-footer">
 								<p class="card-footer-item">
 									<span>
-										<a href="https://twitter.com/codinghorror/status/506010907021828096">Modify</a>
+										<button className="button is-primary cust" onClick={toggle}>
+											Modify
+										</button>
+										<JaModal isShowing={isShowing} hide={toggle} />
 									</span>
 								</p>
 								<p class="card-footer-item">

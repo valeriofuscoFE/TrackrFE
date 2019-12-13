@@ -6,10 +6,14 @@ import Modal from './modals/Modal';
 import SideMenu from './SideMenu';
 import useModal from './modals/useModal';
 import JaDetails from './jaDetails';
+import TopNavBarStudent from './navbars/topNavBarStudent';
+
 const StudentDashboard = () => {
 	const { isShowing, toggle } = useModal();
 
 	return (
+		<>
+		<TopNavBarStudent/>
 		<div className="App">
 			<div className="columns">
 				<div className="column">
@@ -29,6 +33,7 @@ const StudentDashboard = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 

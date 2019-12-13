@@ -1,4 +1,4 @@
-import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID } from '../actions/types';
+import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID, UPDATE_JA } from '../actions/types';
 
 const initialState = {
 	jobapplications: [],
@@ -15,6 +15,12 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				jobapplications: [ ...payload ],
+				loading: false
+			};
+		case UPDATE_JA:
+			return {
+				...state,
+				jobapplication: { ...payload },
 				loading: false
 			};
 		case GET_JA_BY_ID:
