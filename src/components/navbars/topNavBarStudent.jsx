@@ -15,10 +15,10 @@ const TopNavBar2 = () => (
         aria-label="main navigation"
       >
         <div class="navbar-brand">
-          <a class="navbar-item" href="/home">
+          <a class="navbar-item" href="/dashboard">
             TrackR
           </a>
-          <a class="navbar-item" href="/home">
+          <a class="navbar-item" href="/dashboard">
             <img
               class="profilepicture"
               alt="profilepicture"
@@ -40,7 +40,7 @@ const TopNavBar2 = () => (
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">HOME</a>
+            <a class="navbar-item" href="/dashboard">HOME</a>
           </div>
 
           <div class="navbar-end">
