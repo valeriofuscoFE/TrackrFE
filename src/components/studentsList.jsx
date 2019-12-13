@@ -60,6 +60,7 @@ const searchHandler = e =>{
 useEffect(() => {
   const results = usersReducer.filter(student=>
     student.name.toString().toLowerCase().includes(searchStudent.toLowerCase())
+    || student.surname.toString().toLowerCase().includes(searchStudent.toLowerCase())
   );
 
   if (searchStudent.length > 2)

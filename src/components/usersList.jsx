@@ -53,6 +53,7 @@ const searchHandler = e =>{
 useEffect(() => {
   const results = usersReducer.filter(user=>
     user.name.toString().toLowerCase().includes(searchUser.toLowerCase())
+    || user.surname.toString().toLowerCase().includes(searchUser.toLowerCase())
   );
 
   if (searchUser.length > 2)
