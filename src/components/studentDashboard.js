@@ -1,50 +1,35 @@
-import React , {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom'
-import '../App.css'
-import {getJobApplications, addJobApplication} from '../actions/jobapplications.js'
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import '../App.css';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Box,Container, Columns,Column} from 'react-bulma-components'
-import Modal from './modals/Modal'
-import SideMenu from './SideMenu'
+import { Box, Container, Columns, Column } from 'react-bulma-components';
+import Modal from './modals/Modal';
+import SideMenu from './SideMenu';
 import useModal from './modals/useModal';
-
-
+import JaDetails from './jaDetails';
 const StudentDashboard = () => {
+	const { isShowing, toggle } = useModal();
 
-    const {isShowing, toggle} = useModal();
-
-	
-	  return (
-		<>
+	return (
 		<div className="App">
-      <button className="button-default" onClick={toggle}>Show Modal</button>
-      <Modal
-        isShowing={isShowing}
-        hide={toggle}
-      />
+			<div className="columns">
+				<div className="column">
+					<button className="button is-primary cust" onClick={toggle}>
+						+
+					</button>
+					<Modal isShowing={isShowing} hide={toggle} />
+				</div>
+			</div>
+			<div className="columns">
+				<div className="column">
+					<SideMenu />
+				</div>
 
+				<div className="column is-three-fifths">
+					<JaDetails />
+				</div>
+			</div>
+		</div>
+	);
+};
 
-
-
-	  <SideMenu/>
-    </div>
-		
-		</>
-	  );
-	}
-	
-
-  StudentDashboard.propTypes={
-    getJobApplications:PropTypes.func.isRequired,
-    jobapplications: PropTypes.object.isRequired,
-  }    
-  
-  const mapStateToProps = state => ({
-    auth:state.auth,
-    jobapplications:state.jobapplications
-  })
-  
-  
-  export default connect(mapStateToProps,{getJobApplications})(StudentDashboard);
+export default StudentDashboard;

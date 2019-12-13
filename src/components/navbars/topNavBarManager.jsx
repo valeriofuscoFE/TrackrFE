@@ -25,8 +25,8 @@ const TopNavBarManager = () => (
             <img
               src={Profilepicture}
               class="profilepicture"
-              alt="profilepicture"
               width="50px"
+              alt=""
             />
           </a>
 
@@ -45,7 +45,7 @@ const TopNavBarManager = () => (
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">HOME</a>
+            <a class="navbar-item" href="/manager" >HOME</a>
             <a class="navbar-item" href="/studentslist">
               STUDENTS LIST
             </a>

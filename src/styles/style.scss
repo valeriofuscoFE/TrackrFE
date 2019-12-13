@@ -251,7 +251,7 @@ body {
 }
 
 .logoButton{
-   // box-shadow: $primaryBorderShadow;
+    box-shadow: $primaryBorderShadow;
     border-radius:$primaryButtonRadius;
    //  border:$primaryCardBorderColor;
      background-color: transparent;
@@ -300,12 +300,43 @@ body {
     height: auto;
 }
 
+// .modal-backdrop {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     z-index: 0 !important;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: #000;
+// }
+
+
 .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0 !important;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000;
-}
+    z-index: 0;
+  
+    
+  }
+  .modal {
+        z-index: auto;
+        display: block !important;
+        height: fit-content !important;
+        background: none !important;
+        position: fixed !important;
+        margin: 0rem auto;
+        border-radius: 3px;
+       // max-width: 500px;
+        //padding-right: 100px !important;
+     
+  }
+
+  .modal-content{
+      width:450px !important
+  }
+
+//   .modal-dialog-centered::before {
+//     content: none;
+//   }
+//   .modal-dialog {
+//     max-width: 500px;
+//     margin: 5rem auto;
+// }

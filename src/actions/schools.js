@@ -8,7 +8,7 @@ import{
 
 export const getSchools =() => async dispatch =>{
 	try {
-		var res = await fetch("http://localhost:4000/school" , {
+		var res = await fetch(process.env.REACT_APP_URL + "school" , {
 				method: "GET",
 				headers: {
 					"Authorization": "Bearer " + localStorage.token
@@ -16,7 +16,6 @@ export const getSchools =() => async dispatch =>{
 			})
 			if (res.ok) {
 				var schools = await res.json();		
-				console.log(schools,"schools")
 		dispatch({
 			type: GET_SCHOOLS,
 			payload: schools
@@ -30,16 +29,14 @@ export const getSchools =() => async dispatch =>{
 	export const getSchoolbyId =(id) => async dispatch =>{
 		try {
 			// var token = localStorage.getItem("accessToken");
-				var res = await fetch("http://localhost:4000/school/"+id , {
+				var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 					method: "GET",
 					headers: {
 						"Authorization": "Bearer " + localStorage.token
 					},
 				})
 				if (res.ok) {
-					var school = await res.json();
-					console.log(school)
-			
+					var school = await res.json();			
 			dispatch({
 				type: GET_SCHOOL_BYID,
 				payload: school
@@ -55,7 +52,7 @@ export const getSchools =() => async dispatch =>{
 
 	export const addSchool =(state) => async dispatch =>{
 		try {
-			   var res = await fetch("http://localhost:4000/school/create" , {
+			   var res = await fetch(process.env.REACT_APP_URL + "school/create" , {
 					method: "POST",
 					body: JSON.stringify(state),
 					headers: {
@@ -79,16 +76,14 @@ export const getSchools =() => async dispatch =>{
 
 		export const deleteSchool =(id) => async dispatch =>{
 			try {
-				var res = await fetch("http://localhost:4000/school/"+id , {
+				var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 						method: "DELETE",						
 						headers: {
 							"Authorization": "Bearer " + localStorage.token,						
 						}
 					})
 					if (res.ok) {
-						var school = await res.json();
-						console.log(school,"sch")
-				
+						var school = await res.json();				
 				dispatch({
 					type: DELETE_SCHOOL,
 					payload: school
@@ -104,9 +99,8 @@ export const getSchools =() => async dispatch =>{
 
 export const updateSchool =(state,id) => async dispatch =>{
 				try {
-					// var token = localStorage.getItem("accessToken");
-					console.log("hii",id)
-						var res = await fetch("http://localhost:4000/school/"+id , {
+			
+						var res = await fetch(process.env.REACT_APP_URL + "school/"+id , {
 							method: "PUT",
                             body: JSON.stringify(state),
 					        headers: {
@@ -114,17 +108,13 @@ export const updateSchool =(state,id) => async dispatch =>{
 						    "Content-Type": "application/json"
 					         }														
 						})
-						console.log(res,"res")
 						if (res.ok) {
-							var school = await res.json();
-							console.log(school,"sch")
-					
+							var school = await res.json();					
 					dispatch({
 						type: UPDATE_SCHOOL,
 						payload: school
 					})
-				}
-				
+				}				
 				} catch (err) {
 					console.log(err)
 				}

@@ -1,16 +1,16 @@
 import React from 'react';
-import {useEffect, Fragment} from 'react';
-import ReactDOM from "react-dom";
-import { Route, Switch } from "react-router-dom";
+import { useEffect, Fragment } from 'react';
+import ReactDOM from 'react-dom';
+import { Route, Switch } from 'react-router-dom';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 // import {Container, Columns,Column} from 'react-bulma-components'
 import './styles/style.scss';
-import {loadUser} from './actions/auth'
+import { loadUser } from './actions/auth';
 //import TopNavBar from './components/navbars/topNavBar';
 // import sideNavBar from './sideNavBar';
 import landingPage from './components/landingPage';
- import ManagerDashboard from './components/managerDashboard';
- import StudentDashboard from './components/studentDashboard';
+import ManagerDashboard from './components/managerDashboard';
+import StudentDashboard from './components/studentDashboard';
 // import StudentMyInfo from './components/modals/studentMyInfo';
 // import ManagerMyInfo from './components/modals/managerMyInfo';
 // import SchoolDetails from './components/modals/schoolDetails';
@@ -28,51 +28,46 @@ import StudentsKPI from './components/studentsKPI';
 import UsersList from './components/usersList';
 import Login from './components/Login';
 //REDUX
-import {Provider} from 'react-redux'
-import store from './store'
+import { Provider } from 'react-redux';
+import store from './store';
 import setAuthToken from './utils/setAuthToken';
-import PrivateRoute from './components/routing/PrivateRoute'
+import PrivateRoute from './components/routing/PrivateRoute';
 // import ClassPrivateRoute from "./components/routing/ClassPrivateRoute"
 
+require('dotenv').config();
 
-if(localStorage.token){
+if (localStorage.token) {
 	setAuthToken(localStorage.token);
 }
 const App = () => {
 	useEffect(() => {
 		store.dispatch(loadUser());
-	}, [])  
+	}, []);
 
 	return (
-
 		<Provider store={store}>
-		
 			<Fragment>
-{/* 
+				{/* 
 				<Route exact path ='/' component = {Landing}/> */}
 				<section className="container">
 					<Switch>
-						<Route exact path ='/register' component={landingPage}/>
-						<Route exact path ='/Login' component={Login}/>
-						<Route path='/studentslist' component={StudentsList} />
-						<Route path='/studentskpi' component={StudentsKPI} />
-						<Route path='/userslist' component={UsersList} />
-						<Route path='/addstudent' component={AddStudent} />
-						 <PrivateRoute exact path ='/dashboard' component={StudentDashboard}/>
-						 <PrivateRoute exact path='/manager' component={ManagerDashboard}/>
-						 <PrivateRoute exact path='/admin' component={adminDashboard}/>
+						<Route exact path="/register" component={landingPage} />
+						<Route exact path="/Login" component={Login} />
+						<Route path="/studentslist" component={StudentsList} />
+						<Route path="/studentskpi" component={StudentsKPI} />
+						<Route path="/userslist" component={UsersList} />
+						<Route path="/addstudent" component={AddStudent} />
+						<PrivateRoute exact path="/dashboard" component={StudentDashboard} />
+						<PrivateRoute exact path="/manager" component={ManagerDashboard} />
+						<PrivateRoute exact path="/admin" component={adminDashboard} />
 					</Switch>
 				</section>
-				
 			</Fragment>
-		
-		<Footer/>
-    
+
+			<Footer />
 		</Provider>
-
-		  );
-}
-
+	);
+};
 
 // const App = () => (
 //   <>
@@ -89,7 +84,7 @@ const App = () => {
 //        {/* <JobInfoModal/> */}
 //        {/* <TasksModal/> */}
 //        {/* <OfferModal/> */}
-// {/*     
+// {/*
 //       <StudentDashboard/> */}
 //        {/* <ManagerMyInfo/> */}
 //        {/* <StudentMyInfo/> */}
@@ -97,10 +92,9 @@ const App = () => {
 //       {/* <TopNavBar /> */}
 //       {/* <LandingPage /> */}
 //       {/* <SideNavBar /> */}
-    //   <Footer/>
+//   <Footer/>
 //     </Container>
 //   </>
 // );
 
-
-  export default App;
+export default App;
