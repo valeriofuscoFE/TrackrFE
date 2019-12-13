@@ -75,7 +75,7 @@ console.log("searchResult",searchResult)
             <input
               class="input"
               type="text"
-              placeholder="SEARCH STUDENT"
+              placeholder="SEARCH USER"
               onChange={searchHandler}
               value={searchUser}
             />

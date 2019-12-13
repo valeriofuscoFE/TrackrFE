@@ -20,6 +20,8 @@ class AddStudent extends Component {
       // email:"",
       school:"",
       batch:"",
+      search:"",
+      allProfiles: [],
       showModal: false,
       
     };
@@ -52,10 +54,63 @@ class AddStudent extends Component {
   await this.props.fetchUsersThunk();
 }
 
+
+
+
+searchHandler = e => {
+  this.setState({ search: e.target.value });
+  console.log("searchHandler submitted", e.target.value);
+};
+
+
+onSeaarchFilter = () =>{
+  // this.props.fetchUsersThunk();
+    const filter = this.props.usersReducer.users.filter(student=> 
+    student.name.toString().includes(this.state.search))
+
+    console.log("filter", this.props.usersReducer.users)
+}
+
+
     render() {
+
+
+
     return (
       <>
         <TopNavBarManager />
+         {/* SEARCH BAR */}
+      <div class="columns">
+          <div class="column is-3 is-offset-9">
+            <input
+              class="input"
+              type="input"
+              placeholder="SEARCH STUDENT"
+              onChange={this.searchHandler}
+             
+            />
+          </div>
+        </div>
+        <div>
+          {this.state.allProfiles.map(search => (
+            <div>
+              <div key={search._id} class="columns is-gapless is-centered">
+                <div class="column is-2 filteredColumn">{search.name}</div>
+                <div class="column is-2 filteredColumn">{search.surname}</div>
+                <div class="column is-3 filteredColumn">{search.email}</div>
+                <div class="column is-2 filteredColumn">{search.school}</div>
+                {/* <button
+                  class="button"
+                  id="buttonDelete"
+                  onClick={() => deleteUserHandler(search._id)}
+                >
+                  X
+                </button> */}
+              </div>
+              <hr></hr>
+            </div>
+          ))}
+        </div>
         <Container>
           {/* MAPPING USERS FOR POTENTIAL BATCH MEMBERS */}
           {this.props.usersReducer.users &&
