@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getJobApplications } from '../actions/jobapplications';
-
+import { getJobApplications, loadId } from '../actions/jobapplications';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { ifStatement } from '@babel/types';
 
-const SideMenu = ({ getJobApplications, auth, jobapplications }) => {
+const SideMenu = ({ getJobApplications, auth, jobapplications, loadId }) => {
 	useEffect(
 		() => {
 			if (auth.user) {
@@ -16,6 +14,10 @@ const SideMenu = ({ getJobApplications, auth, jobapplications }) => {
 		[ auth.user ]
 	);
 
+	const onClick = (id) => {
+		loadId(id);
+	};
+
 	return (
 		<aside className="menu">
 			<p className="menu-label">YOUR JOB APPLICATIONS</p>
@@ -23,7 +25,7 @@ const SideMenu = ({ getJobApplications, auth, jobapplications }) => {
 				{jobapplications.map((jobapplication) => (
 					<li key={jobapplication._id}>
 						<div>
-							<a>{jobapplication.companyName}</a>
+							<a onClick={(id) => onClick(jobapplication._id)}>{jobapplication.companyName}</a>
 						</div>
 					</li>
 				))}
@@ -33,7 +35,8 @@ const SideMenu = ({ getJobApplications, auth, jobapplications }) => {
 };
 
 SideMenu.propTypes = {
-	getJobApplications: PropTypes.func.isRequired
+	getJobApplications: PropTypes.func.isRequired,
+	loadId: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -41,4 +44,4 @@ const mapStateToProps = (state) => ({
 	jobapplications: state.jobapplications.jobapplications
 });
 
-export default connect(mapStateToProps, { getJobApplications })(SideMenu);
+export default connect(mapStateToProps, { getJobApplications, loadId })(SideMenu);
