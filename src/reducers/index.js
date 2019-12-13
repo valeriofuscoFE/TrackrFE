@@ -7,6 +7,7 @@ import profile from './profile';
 import schools from './schools';
 import manager from './manager';
 import message from './errMess';
+
 // import students from './students'
 // import applications from './applications'
 

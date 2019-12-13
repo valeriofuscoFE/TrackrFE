@@ -1,11 +1,11 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getJobApplicationById } from '../actions/jobapplications';
+import { getJobApplicationById, deleteJobApplication } from '../actions/jobapplications';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import useModal from './modals/useModal';
 import JaModal from './modals/JaModal';
 
-const JaDetails = ({ getJobApplicationById, jobapplicationId, jobapplication }) => {
+const JaDetails = ({ getJobApplicationById, jobapplicationId, jobapplication, deleteJobApplication }) => {
 	const { isShowing, toggle } = useModal();
 
 	useEffect(
@@ -38,7 +38,9 @@ const JaDetails = ({ getJobApplicationById, jobapplicationId, jobapplication }) 
 									</span>
 								</p>
 								<p class="card-footer-item">
-									<span>DELETE</span>
+								<button className="button is-primary cust" onClick={deleteJobApplication(jobapplicationId)}>
+											Delete
+										</button>
 								</p>
 							</footer>
 						</Fragment>
@@ -54,4 +56,4 @@ const mapStateToProps = (state) => ({
 	jobapplication: state.jobapplications.jobapplication
 });
 
-export default connect(mapStateToProps, { getJobApplicationById })(JaDetails);
+export default connect(mapStateToProps, { getJobApplicationById, deleteJobApplication })(JaDetails);

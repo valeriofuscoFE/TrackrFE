@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID, UPDATE_JA } from './types';
+import { GET_JA, JA_ERROR, JA_SUCCESS, LOAD_ID, GET_JA_BY_ID, UPDATE_JA, DELETE_JA } from './types';
 
 export const getJobApplications = (studentId) => async (dispatch) => {
 	console.log(studentId);
@@ -78,6 +78,21 @@ export const modifyJobApplication = ({ jaId, formData }) => async (dispatch) => 
 			payload: res.data
 		});
 	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const deleteJobApplication = ( jaId ) => async (dispatch) => {
+	try {
+	
+			await axios.delete(`http://localhost:4000/application/${jaId}`)
+
+			dispatch({
+				type: DELETE_JA,
+				payload: jaId
+			});
+		// window.reload("/dashboard")
+		} catch (err) {
 		console.log(err);
 	}
 };
