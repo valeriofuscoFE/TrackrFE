@@ -1,24 +1,26 @@
-import React , {useState} from 'react';
+import React , {useState, dispatch, useEffect} from 'react';
 import TopNavBar from './navbars/topNavBar'
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
 import { register } from '../actions/auth';
 import PropTypes from 'prop-types';
 import { Box,Container, Columns,Column} from 'react-bulma-components'
 
 
 
-const LandingPage = ({register,isRegistered}) => {
+const LandingPage = ({register, isRegistered, message}) => {
 	const [formData, setFormData] = useState({
 		name: '',
-    surname:'',
-    username:'',
-		email: '',
+		surname:'',
+    email: '',
+    username: '',
 		password: '',
 		role:'',
 		schoolName:'',
-		gitURL:''
-	  });
+    gitURL:'',
+    });
+    
+
 
 	  const onChange = e =>
 	  setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,15 +28,23 @@ const LandingPage = ({register,isRegistered}) => {
 
 	  const onSubmit = async e => {
 		e.preventDefault();
-		register({ name ,surname,username, email,password,role,schoolName, gitURL, username: email  });
+    register({ name ,surname, email,password,role,schoolName, gitURL, username: email  });
+       console.log(formData)  
+      //  try{
+      //   register({ name ,surname, email,password,role,schoolName, gitURL, username: email  });
+      //   var error = state.message.message
+      //   console.log(error)
+      //  } catch{
 
-       console.log(formData)
+      //  }
+       
 	  }
-	
-	  const { name ,surname, username, email,password,role, schoolName,gitURL   } = formData;
-	  
-	
+        if(isRegistered){
+        return <Redirect to='/Login'/>
+        }
+        
 
+	  const { name ,surname, email,password,role, schoolName, gitURL   } = formData;
 
 
 	return(
@@ -106,7 +116,7 @@ const LandingPage = ({register,isRegistered}) => {
   <div className="control">
     <div className="select">
       <select name="role" value={role} onChange={e => onChange(e)}   id="roleOption" >
-        <option>School Manager</option>
+        <option>Manager</option>
         <option>Student</option>
         <option>Admin</option>
       </select>
@@ -161,11 +171,12 @@ const LandingPage = ({register,isRegistered}) => {
 
 LandingPage.propTypes = {
 	register: PropTypes.func.isRequired,
-	isRegistered: PropTypes.bool
+  isRegistered: PropTypes.bool
   };
 
   const mapStateToProps = state => ({
-	isRegistered: state.auth.isAuthenticated
+  isRegistered: state.auth.isRegistered,
+  message: state.message.message
   });
 
   export default connect(

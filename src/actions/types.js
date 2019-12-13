@@ -23,3 +23,4 @@ export const DELETE_SCHOOL = 'DELETE_SCHOOL';
 export const UPDATE_SCHOOL = 'UPDATE_SCHOOL';
 export const GET_SCHOOL_BYID = 'GET_SCHOOLS_BYID';
 export const GET_TOTAL_STUDENTS = 'GET_TOTAL_STUDENTS';
+export const ERR_MSG = 'ERR_MSG';
