@@ -54,27 +54,48 @@ class AddStudent extends Component {
   await this.props.fetchUsersThunk();
 }
 
+//SEARCH BAR
+// useEffect(() => {
+//   const results = usersReducer.filter(student=>
+//     student.name.toString().toLowerCase().includes(searchStudent.toLowerCase())
+//     || student.surname.toString().toLowerCase().includes(searchStudent.toLowerCase())
+//   );
 
+//   if (searchStudent.length > 2)
+//   return (
+//   setSearchResult(results));
+// }, [searchStudent]);
 
 
 searchHandler = e => {
-  this.setState({ search: e.target.value });
+  this.setState({ search: e.target.value});
   console.log("searchHandler submitted", e.target.value);
+  console.log("SEARCH submitted", this.state.search);
 };
 
 
-onSeaarchFilter = () =>{
+onSearchFilter = () =>{
   // this.props.fetchUsersThunk();
     const filter = this.props.usersReducer.users.filter(student=> 
     student.name.toString().includes(this.state.search))
 
-    console.log("filter", this.props.usersReducer.users)
+    // return this.setState({ allProfiles: student.name });
+    console.log("filter", this.state.search)
 }
 
+// onSearchFilter = (search) => { 
+//  this.props.fetchUsersThunk();
+//   const filter = this.props.usersReducer.users.filter(student=> 
+//   student.name.toString().toLowerCase().includes(this.state.search.toLowerCase())
+//   || student.surname.toString().toLowerCase().includes(this.state.search.toLowerCase())
+// )
+// console.log("student filter", this.props.usersReducer.users)
+// if (search.length > 2)
+// return  this.setState({ allProfiles: filter});
+
+// }
 
     render() {
-
-
 
     return (
       <>
@@ -85,13 +106,16 @@ onSeaarchFilter = () =>{
             <input
               class="input"
               type="input"
-              placeholder="SEARCH STUDENT"
+              placeholder="search"
               onChange={this.searchHandler}
              
             />
           </div>
         </div>
         <div>
+         
+         
+         
           {this.state.allProfiles.map(search => (
             <div>
               <div key={search._id} class="columns is-gapless is-centered">
